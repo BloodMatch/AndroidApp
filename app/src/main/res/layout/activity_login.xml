@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_long_logo"
         app:layout_constraintVertical_chainStyle="packed"
-        android:contentDescription="@string/bloodmatchelogo" />
+        android:contentDescription="@string/blood_match_logo" />
 
     <TextView
         android:id="@+id/login"
@@ -120,15 +120,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_login" />
 
-    <TextView
-        android:id="@+id/textView4"
+    <ImageView
+        android:id="@+id/slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="@string/give_blood_save_life"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:srcCompat="@drawable/ic_slogan_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:contentDescription="@string/blood_match_slogan" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,7 +8,8 @@
     <string name="give_blood_save_life">GIVE BLOOD SAVE LIFE</string>
     <string name="email">Email</string>
     <string name="sign_in_with_google">Sign In with Google</string>
-    <string name="bloodmatchelogo">BloodMatcheLogo</string>
+    <string name="blood_match_logo">Blood Match</string>
+    <string name="blood_match_slogan">Give Blood - Save Life</string>
     <string name="register">Register</string>
     <string name="already_have_an_account_sign_in">Already have an account. Sign In</string>
     <string name="sign_up">Sign Up</string>
