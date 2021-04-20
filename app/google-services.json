@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "864992450241",
+    "project_id": "bloodmatch-69ce6",
+    "storage_bucket": "bloodmatch-69ce6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864992450241:android:cc55f14459e0af826b6640",
+        "android_client_info": {
+          "package_name": "com.example.bloodmatch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864992450241-u89qg4jab0qsh3a5mjs9dfgsd6bcdj62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABGAEMqEhcM5NtzWm_hPlzOM7BDU2YVME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864992450241-u89qg4jab0qsh3a5mjs9dfgsd6bcdj62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

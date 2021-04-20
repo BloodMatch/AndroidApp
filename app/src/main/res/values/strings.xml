@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BloodMatch</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_register_now">Don\'t have an account? Register Now</string>
+    <string name="give_blood_save_life">GIVE BLOOD SAVE LIFE</string>
+    <string name="email">Email</string>
+    <string name="sign_in_with_google">Sign In with Google</string>
+    <string name="bloodmatchelogo">BloodMatcheLogo</string>
+    <string name="register">Register</string>
+    <string name="already_have_an_account_sign_in">Already have an account. Sign In</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
