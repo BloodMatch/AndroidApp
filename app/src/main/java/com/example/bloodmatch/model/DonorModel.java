@@ -1,6 +1,8 @@
 package com.example.bloodmatch.model;
 
-public class DonorModel  {
+import java.io.Serializable;
+
+public class DonorModel implements Serializable {
     private String cin, gender, birthDate, city,
     firstTime, lastTime, bloodGroup;
     private Integer zipCode, frequency, quantity;

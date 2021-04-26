@@ -212,6 +212,8 @@ public class RegisterActivity extends AppCompatActivity {
                     UserFirebase.sendEmailVerification();
                     donorFirebase.insertDocument(user.getEmail()).addOnSuccessListener(aVoid -> {
                         Log.d(TAG, "insertDocument:success");
+                        // set default image profile
+                        setDefaultPhoto();
                     });
 
                 } else {
@@ -234,5 +236,24 @@ public class RegisterActivity extends AppCompatActivity {
     public void endActivity(View view) {
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
         finish();
+    }
+
+    /**
+     * Get image Uri from FirebaseStorage
+     * */
+    private void setDefaultPhoto(){
+       UserFirebase.getPhotoUrl("default-avatar.png")
+                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        UserFirebase.updatePhotoUrl(uri);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Home.this, "Failed to getUri default", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

@@ -13,6 +13,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Register" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".BaseActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="login" />

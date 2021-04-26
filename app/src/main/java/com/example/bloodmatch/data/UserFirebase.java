@@ -11,6 +11,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import java.util.concurrent.Executor;
@@ -27,6 +29,29 @@ public class UserFirebase {
 
     public UserFirebase(UserModel userModel){
         this.userModel = userModel;
+    }
+
+    /**
+     * Set user profile image
+     * */
+    private static void updatePhotoUrl(Uri uri){
+        FirebaseUser user = mAuth.getCurrentUser();
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(uri)
+                .build();
+
+        return user.updateProfile(profileUpdates);
+    }
+
+    /**
+     * Get image Uri from FirebaseStorage
+     * */
+    private static void getPhotoUrl(String endPoint){
+        FirebaseUser user = mAuth.getCurrentUser();
+        StorageReference profileImageRef = storage.getReference().child("profile/"+endPoint);
+
+        return profileImageRef.child(userImage)
+                .getDownloadUrl();
     }
 
     public void updateProfile() {

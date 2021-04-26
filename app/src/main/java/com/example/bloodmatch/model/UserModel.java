@@ -1,7 +1,10 @@
 package com.example.bloodmatch.model;
 
+import android.net.Uri;
+
 public class UserModel {
-    private String DisplayName, Email, IsEmailVerified,  PhoneNumber, PhotoUrl, Password;
+    private String DisplayName, Email, IsEmailVerified,  PhoneNumber, Password;
+    private Uri  PhotoUrl;
 
     public  UserModel(){}
 
