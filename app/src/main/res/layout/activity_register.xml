@@ -4,131 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register"
-    android:background="@drawable/gradient_background">
+    android:background="@drawable/gradient_background"
+    tools:context=".RegisterActivity">
 
     <ImageView
-        android:id="@+id/Logo"
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0.1"
-        app:layout_constraintBottom_toTopOf="@+id/login"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/blood_match_logo"
+        app:layout_constraintBottom_toTopOf="@+id/group_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_long_logo"
+        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintVertical_chainStyle="packed"
-        android:contentDescription="@string/bloodmatchelogo" />
+        app:srcCompat="@drawable/ic_long_logo" />
 
-    <TextView
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/group_title"
+        android:layout_marginStart="@dimen/margin_leftRight_text_input"
+        android:layout_marginEnd="@dimen/margin_leftRight_text_input"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        android:textColor="@color/white"
-        android:textSize="40sp"
+        android:orientation="horizontal"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/email_input"
+        app:layout_constraintBottom_toTopOf="@id/registration_form"
+        app:layout_constraintTop_toBottomOf="@+id/logo"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Logo" />
+        app:layout_constraintRight_toRightOf="parent">
+        <TextView
+            android:id="@+id/sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_title"
+            android:textColor="@color/white"
+            android:textSize="10pt"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:id="@+id/stepIndex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Step 01"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:textSize="8pt"
+            android:textColor="@color/white"
+            app:layout_constraintVertical_bias="0.1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_weight="1"
+            />
 
-    <EditText
-        android:id="@+id/email_input"
-        android:layout_width="248dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_shape"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email"
-        android:padding="10dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/password_input"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/password_input"
-        android:layout_width="248dp"
-        android:layout_height="43dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/input_shape"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/button_register"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_input"
-        android:autofillHints="" />
-
-    <TextView
-        android:id="@+id/forget_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:text="@string/forget_password"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@id/button_register"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_input" />
-
-    <Button
-        android:id="@+id/button_register"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/white_button"
-        android:text="@string/register"
-        android:textAllCaps="false"
-        android:textColor="@color/blood_color"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toTopOf="@id/signIn"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_input"
+    </LinearLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="150dp"
+        android:layout_marginStart="@dimen/margin_leftRight_text_input"
+        android:layout_marginEnd="@dimen/margin_leftRight_text_input"
+        app:layout_constraintTop_toBottomOf="@id/group_title"
+        android:layout_marginTop="10dp"
         />
 
-    <TextView
-        android:id="@+id/signIn"
-        android:layout_width="wrap_content"
+    <ViewFlipper
+        android:id="@+id/registration_form"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/already_have_an_account_sign_in"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="@dimen/margin_leftRight_text_input"
+        android:layout_marginEnd="@dimen/margin_leftRight_text_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_register" />
+        app:layout_constraintTop_toBottomOf="@id/group_title"
+        app:layout_constraintBottom_toTopOf="@id/group_buttons">
+        <include android:id="@+id/step1" layout="@layout/view_registration_step_one" />
+        <include android:id="@+id/step2" layout="@layout/view_registration_step_two" />
+        <include android:id="@+id/step3" layout="@layout/view_registration_step_three" />
+    </ViewFlipper>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/group_buttons"
+        android:layout_marginStart="@dimen/margin_leftRight_text_input"
+        android:layout_marginEnd="@dimen/margin_leftRight_text_input"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/give_blood_save_life"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
+        <Button
+            android:id="@+id/button_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input_white"
+            android:text="@string/cancel_button_text"
+            android:layout_marginRight="10dp"
+            android:textAllCaps="false"
+            android:textColor="@color/blood_color"
+            android:onClick="endActivity"
+            android:layout_weight=".60"/>
+        <Button
+            android:id="@+id/button_continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input_white"
+            android:text="@string/continue_button_text"
+            android:textAllCaps="false"
+            android:textColor="@color/blood_color"
+            android:layout_weight=".40"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home"
+    tools:context=".HomeActivity"
     android:background="@drawable/gradient_background">
 
     <ImageView
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_long_logo"
         app:layout_constraintVertical_chainStyle="packed"
-        android:contentDescription="@string/bloodmatchelogo" />
+        android:contentDescription="@string/blood_match_logo" />
 
     <Button
         android:id="@+id/button_logout"

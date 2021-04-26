@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".Register"
     android:background="@drawable/gradient_background">
 
     <ImageView
@@ -18,24 +18,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_long_logo"
         app:layout_constraintVertical_chainStyle="packed"
-        android:contentDescription="@string/blood_match_logo" />
+        />
 
     <TextView
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/sign_in_title"
+        android:text="@string/sign_up_title"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@id/email"
+        app:layout_constraintBottom_toTopOf="@id/email_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Logo" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email_input"
         android:layout_width="248dp"
         android:layout_height="43dp"
         android:layout_marginLeft="20dp"
@@ -46,15 +46,15 @@
         android:padding="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="15dp"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintBottom_toTopOf="@id/password"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/password_input"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/login"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password_input"
         android:layout_width="248dp"
         android:layout_height="43dp"
         android:layout_marginLeft="20dp"
@@ -64,52 +64,53 @@
         android:hint="@string/password_prompt"
         android:padding="10dp"
         android:layout_marginBottom="20dp"
-        android:textColorHint="@color/hint_text"
-        app:layout_constraintBottom_toTopOf="@id/button_login"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/button_register"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email"
-        android:autofillHints=""
-        />
+        app:layout_constraintTop_toBottomOf="@id/email_input"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/forget_password"
-        android:layout_width="248dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="@string/forget_password"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:gravity="right"
-        android:visibility="gone"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@id/button_login"
+        app:layout_constraintBottom_toTopOf="@id/button_register"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password" />
+        app:layout_constraintTop_toBottomOf="@id/password_input" />
 
     <Button
-        android:id="@+id/button_login"
+        android:id="@+id/button_register"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/bg_input_white"
-        android:text="@string/sign_in_button"
+        android:text="Register"
         android:textAllCaps="false"
         android:textColor="@color/blood_color"
-        app:layout_constraintBottom_toTopOf="@id/register_now"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toTopOf="@id/signIn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintTop_toBottomOf="@id/password_input"
         />
 
     <TextView
-        android:id="@+id/register_now"
+        android:id="@+id/signIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/don_t_have_an_account_register_now"
+        android:text="@string/already_have_an_account_sign_in"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:layout_marginLeft="20dp"
@@ -117,18 +118,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_login" />
+        app:layout_constraintTop_toBottomOf="@id/button_register" />
 
-
-    <ImageView
-        android:id="@+id/slogan"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/ic_slogan_white"
+        android:text="@string/give_blood_save_life"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:contentDescription="@string/blood_match_slogan" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
