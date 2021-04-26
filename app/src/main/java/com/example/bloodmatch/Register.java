@@ -21,7 +21,7 @@ public class Register extends AppCompatActivity {
     private EditText userEmail;
     private EditText userPassword;
     private Button registerButton;
-    private TextView tvSignUp;
+    private TextView tvSignIn;
     private FirebaseAuth mAuth;
 
     @Override
@@ -33,13 +33,13 @@ public class Register extends AppCompatActivity {
         userEmail = findViewById(R.id.email_input);
         userPassword = findViewById(R.id.password_input);
         registerButton = findViewById(R.id.button_register);
-        tvSignUp = findViewById(R.id.signIn);
-
-        tvSignUp.setOnClickListener(new View.OnClickListener() {
+        tvSignIn = findViewById(R.id.signIn);
+        tvSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Register.this, LoginActivity.class));
-
+                Intent i = new Intent(Register.this, LoginActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
             }
         });
 
