@@ -43,7 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id == R.id.nav_home){
-            Intent i = new Intent(BaseActivity.this, Home.class);
+            Intent i = new Intent(BaseActivity.this, HomeActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         }else if(id == R.id.nav_profile){
@@ -62,9 +62,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      *  Check if the user is logged in
      * */
-    private void checkLogin(FirebaseUser user){
+    protected void checkLogin(FirebaseUser user){
         if(user == null){
-            startActivity(new Intent(Home.this, LoginActivity.class));
+            startActivity(new Intent(BaseActivity.this, LoginActivity.class));
             finish();
         }
     }

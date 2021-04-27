@@ -11,35 +11,30 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bloodmatch.models.User;
+import com.example.bloodmatch.data.UserFirebase;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailInput, passwordInput;
     private Button loginButton;
     private TextView registerNowText, forgotPasswordTextView;
     private FirebaseAuth mAuth;
-    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+
         // check  if user is alreadyLogged
         isAlreadyLogged();
 
-        emailInput = findViewById(R.id.email);
-        passwordInput = findViewById(R.id.password);
+        emailInput = findViewById(R.id.email_input);
+        passwordInput = findViewById(R.id.password_input);
         loginButton = findViewById(R.id.button_login);
         registerNowText = findViewById(R.id.register_now);
         forgotPasswordTextView = findViewById(R.id.forget_password);
@@ -72,7 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                UserFirebase.signIn(email, password)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()){
@@ -95,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void UpdateUI(){
-        Intent i = new Intent(LoginActivity.this, Home.class);
+        Intent i = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(i);
         finish();
     }

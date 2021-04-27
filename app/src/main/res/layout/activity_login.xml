@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/gradient_background">
 
         <ImageView
@@ -48,7 +48,7 @@
             android:layout_marginBottom="35dp"
             android:autofillHints=""
             android:drawableStart="@drawable/ic_baseline_email_24"
-            android:background="@drawable/input_shape"
+            android:background="@drawable/bg_input_light_red"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="10dp"
@@ -67,7 +67,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginBottom="36dp"
             android:autofillHints=""
-            android:background="@drawable/input_shape"
+            android:background="@drawable/bg_input_light_red"
             android:hint="@string/password"
             android:drawableStart="@drawable/ic_lock"
             android:inputType="textPassword"
@@ -102,18 +102,18 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/white_button"
+            android:background="@drawable/bg_input_white"
             android:text="@string/login"
             android:textAllCaps="false"
             android:textColor="@color/blood_color"
-            app:layout_constraintBottom_toTopOf="@+id/register"
+            app:layout_constraintBottom_toTopOf="@+id/register_now"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/forget_password" />
 
         <TextView
-            android:id="@+id/register"
+            android:id="@+id/register_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"

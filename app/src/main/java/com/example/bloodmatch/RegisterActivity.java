@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -25,9 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.auth.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -208,10 +207,10 @@ public class RegisterActivity extends AppCompatActivity {
 
             userFirebase.createAccount().addOnCompleteListener(RegisterActivity.this, task -> {
                 if (task.isSuccessful()) {
-                    Log.d(TAG, "createAccount:success");
+                    Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
                     UserFirebase.sendEmailVerification();
                     donorFirebase.insertDocument(user.getEmail()).addOnSuccessListener(aVoid -> {
-                        Log.d(TAG, "insertDocument:success");
+                        Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
                         // set default image profile
                         setDefaultPhoto();
                     });
@@ -221,8 +220,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
                 loadingProgressBar.setVisibility(View.GONE);
             });
-
-            //endActivity(v);
         };
 
         continueButton.setOnClickListener(stepOneActionListener);
@@ -246,13 +243,27 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        UserFirebase.updatePhotoUrl(uri);
+                        Toast.makeText(RegisterActivity.this, "Image url retreved", Toast.LENGTH_SHORT).show();
+                        UserFirebase.updatePhotoUrl(uri)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(RegisterActivity.this, "Image updated", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(RegisterActivity.this, "Image failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Home.this, "Failed to getUri default", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Failed to getUri", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

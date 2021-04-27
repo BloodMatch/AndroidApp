@@ -41,10 +41,10 @@ public class UserModel {
     }
 
     public void setPhotoUrl(String photoUrl) {
-        PhotoUrl = photoUrl;
+        PhotoUrl = PhotoUrl;
     }
 
-    public String getPhotoUrl() {
+    public Uri getPhotoUrl() {
         return PhotoUrl;
     }
 
