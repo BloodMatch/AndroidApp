@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bloodmatch.data.UserFirebase;
+import com.example.bloodmatch.data.UserAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                UserFirebase.signIn(email, password)
+                UserAccount.signIn(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

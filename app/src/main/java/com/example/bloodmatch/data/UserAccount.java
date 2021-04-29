@@ -11,7 +11,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class UserFirebase {
+public class UserAccount {
     protected  UserModel userModel;
     private static FirebaseAuth  mAuth;
     private static FirebaseStorage storage;
@@ -20,9 +20,9 @@ public class UserFirebase {
         storage = FirebaseStorage.getInstance();
     }
 
-    public UserFirebase(){}
+    public UserAccount(){}
 
-    public UserFirebase(UserModel userModel){
+    public UserAccount(UserModel userModel){
         this.userModel = userModel;
     }
 
@@ -70,6 +70,7 @@ public class UserFirebase {
     public Task<Void> sendPasswordReset() {
         return mAuth.sendPasswordResetEmail(userModel.getEmail());
     }
+
 
     public Task<AuthResult> createAccount() {
         return mAuth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getPassword());

@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodMatch">
-        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".MakeRequestActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Register" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".BaseActivity" />
         <activity
             android:name=".LoginActivity"

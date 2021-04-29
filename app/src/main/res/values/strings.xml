@@ -3,7 +3,7 @@
     <string name="organization_name">BloodMatch</string>
     <string name="email_prompt">Email</string>
     <string name="password_prompt">password</string>
-    <string name="forget_password">Forget Password ?</string>
+    <string name="forget_password">Forgot Password ?</string>
     <string name="sign_in_button">Login</string>
     <string name="sign_in_title">Sign In</string>
     <string name="sign_up_button">Register</string>
@@ -20,6 +20,7 @@
     <string name="cancel_button_text">Cancel</string>
     <string name="create_button_text">Create</string>
     <string name="reset_button_text">Reset</string>
+    <string name="submit_button_text">Submit</string>
     <string name="long_logo_bloodMatch">BloodMatch logo</string>
     <string name="sign_in">Sign In</string>
     <string name="password">Password</string>
@@ -28,7 +29,6 @@
     <string name="don_t_have_an_account_register_now">Don\'t have an account? Register Now</string>
     <string name="give_blood_save_life">Give blood save life</string>
     <string name="email">Email</string>
-    <string name="bloodmatchelogo">BloodMatcheLogo</string>
     <string name="register">Register</string>
     <string name="already_have_an_account_sign_in">Already have an account. Sign In</string>
     <string name="sign_up">Sign Up</string>
@@ -36,4 +36,6 @@
     <string name="recipient">Recipient</string>
     <string name="home">Home</string>
     <string name="profile">Profile</string>
+    <string name="update_profile">Update profile</string>
+    <string name="change_password">Change password</string>
 </resources>

@@ -14,4 +14,7 @@
     <color name="blood_from">#EF473A</color>
     <color name="blood_to">#EA384D</color>
     <color name="google_button">#4285F4</color>
+    <color name="light_gray">#EEEEEE</color>
+    <color name="gray">#AAAAAA</color>
+    <color name="dark_gray">#555555</color>
 </resources>
