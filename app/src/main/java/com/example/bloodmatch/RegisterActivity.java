@@ -20,6 +20,7 @@ import android.widget.ViewFlipper;
 
 import com.example.bloodmatch.data.DonorCollection;
 import com.example.bloodmatch.data.UserAccount;
+import com.example.bloodmatch.model.Blood;
 import com.example.bloodmatch.model.DonorModel;
 import com.example.bloodmatch.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,17 +28,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterActivity extends AppCompatActivity {
+public class  RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "Register";
     private int stepIndex = 1;
     private EditText
-            fullNameEditText , emailEditText, passwordEditText, confirmPasswordEditText,
+            fullNameEditText ,phoneNumberEditText,  emailEditText, passwordEditText, confirmPasswordEditText,
             cinEditText, birthDateEditText , cityEditText, zipCodeEditText,
             firstTimeEditText, lastTimeEditText, frequencyEditText, quantityEditText;
     private ProgressBar loadingProgressBar;
-    private RadioGroup genderRadioGroup;
-    private RadioButton genderSelectedButton;
+    private RadioGroup genderRadioGroup, bloodRadioGroup, rhesusRadioGroup;
+    private RadioButton genderSelectedButton,  bloodRadioButton, rhesusRadioButton ;
     private TextView stepIndexTextView;
     private FirebaseAuth mAuth;
     private ViewFlipper viewFlipper;
@@ -56,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         loadingProgressBar = findViewById(R.id.loading);
 
         fullNameEditText = findViewById(R.id.displayName);
+        phoneNumberEditText = findViewById(R.id.phoneNumber);
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         confirmPasswordEditText = findViewById(R.id.confirmPassword);
@@ -66,6 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
         cityEditText = findViewById(R.id.city);
         zipCodeEditText = findViewById(R.id.zipCode);
 
+        bloodRadioGroup = findViewById(R.id.blood_group);
+        rhesusRadioGroup = findViewById(R.id.rhesus_signe);
         firstTimeEditText = findViewById(R.id.firstTime);
         lastTimeEditText =findViewById(R.id.lastTime);
         frequencyEditText = findViewById(R.id.frequency);
@@ -75,12 +79,18 @@ public class RegisterActivity extends AppCompatActivity {
         UserModel user = new UserModel();
 
         stepOneActionListener = v -> {
-            String fullName, email, password, confirmPassword;
+            String fullName, phoneNumber, email, password, confirmPassword;
             fullName = fullNameEditText.getText().toString();
             if( fullName.isEmpty() ){
                 fullNameEditText.setError("Please enter your full name !");
                 return;
             }
+
+            phoneNumber = phoneNumberEditText.getText().toString();
+            /*if( phoneNumber.isEmpty() ){
+                phoneNumberEditText.setError("phoneNumber cannot be empty !");
+                return;
+            }*/
 
             email = emailEditText.getText().toString();
             if( email.isEmpty() ){
@@ -116,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             user.setDisplayName(fullName);
+            user.setPhoneNumber(phoneNumber);
             user.setEmail(email);
             user.setPassword(password);
 
@@ -174,13 +185,29 @@ public class RegisterActivity extends AppCompatActivity {
             nextStep();
         };
         stepThreeActionListener = v -> {
-            String firstTime, lastTime;
+            String btype, brhesus, firstTime, lastTime;
             String sfrequency, squantity;
             Integer frequency, quantity;
             firstTime = firstTimeEditText.getText().toString();
             lastTime = lastTimeEditText.getText().toString();
             sfrequency = frequencyEditText.getText().toString();
             squantity = quantityEditText.getText().toString();
+
+            int selectedID = bloodRadioGroup.getCheckedRadioButtonId();
+            if( selectedID != -1 ) {
+                bloodRadioButton = findViewById(selectedID);
+                btype = bloodRadioButton.getText().toString();
+            }else{
+                btype = null;
+            }
+
+            selectedID = rhesusRadioGroup.getCheckedRadioButtonId();
+            if( selectedID != -1 ) {
+                rhesusRadioButton = findViewById(selectedID);
+                brhesus = rhesusRadioButton.getText().toString();
+            }else{
+                brhesus = null;
+            }
 
             if( sfrequency.isEmpty() ){
                 frequency = null;
@@ -194,6 +221,10 @@ public class RegisterActivity extends AppCompatActivity {
                 quantity = Integer.parseInt(squantity);
             }
 
+            Blood blood=new Blood();
+            blood.setType(btype);
+            blood.setRhesus(Character.toString(brhesus.charAt(2)));
+            donor.setBlood(blood);
             donor.setFirstTime(firstTime);
             donor.setLastTime(lastTime);
             donor.setFrequency(frequency);
@@ -202,7 +233,7 @@ public class RegisterActivity extends AppCompatActivity {
             loadingProgressBar.setVisibility(View.VISIBLE);
 
             DonorCollection donorCollection = new DonorCollection(donor);
-            UserAccount userAccount = new UserAccount((user));
+            UserAccount userAccount = new UserAccount(user);
 
             userAccount.createAccount().addOnCompleteListener(RegisterActivity.this, task -> {
                 if (task.isSuccessful()) {

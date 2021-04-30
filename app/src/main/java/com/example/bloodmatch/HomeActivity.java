@@ -1,9 +1,9 @@
 package com.example.bloodmatch;
 
-import androidx.annotation.NonNull;
-
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +14,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.example.bloodmatch.data.DonorCollection;
 import com.example.bloodmatch.data.UserAccount;
 import com.example.bloodmatch.model.DonorModel;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -26,6 +25,7 @@ public class HomeActivity extends BaseActivity {
     private TextView tvUserName, tvUserBloodGroup;
     private FirebaseAuth mAuth;
     private DonorModel donor;
+    private Button donorButton, recipientButton;
 
     /**
      * Should implement this method to have a navbar
@@ -46,8 +46,11 @@ public class HomeActivity extends BaseActivity {
         ivUser = findViewById(R.id.user_image);
         tvUserName = findViewById(R.id.user_name);
         tvUserBloodGroup = findViewById(R.id.user_bloodGroup);
+        donorButton = findViewById(R.id.button_donor);
+        recipientButton = findViewById(R.id.button_recipient);
+
         tvUserName.setText(user.getDisplayName());
-        displayImage(user.getPhotoUrl());
+        displayProfilePicture(user.getPhotoUrl());
 
         // Get user Document
         DonorCollection.selectDocument(user.getEmail())
@@ -55,22 +58,32 @@ public class HomeActivity extends BaseActivity {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         donor = documentSnapshot.toObject(DonorModel.class);
-                        tvUserBloodGroup.setText(donor.getBloodGroup());
+                        tvUserBloodGroup.setText(donor.getBlood().toString());
                     }
                 });
+
+        donorButton.setOnClickListener(v->{
+            /*Intent i = new Intent(HomeActivity.this, MakeRequestActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);*/
+            Toast.makeText(HomeActivity.this, "Donor Button Clicked", Toast.LENGTH_SHORT).show();
+        });
+
+        recipientButton.setOnClickListener(v->{
+            Intent i = new Intent(HomeActivity.this, MakeRequestActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+        });
     }
 
     /// Todo : should be in the Profile activity 
     public void updatePhotoUrl(Uri uri){
         UserAccount.updatePhotoUrl(uri)
-        .addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(HomeActivity.this, "User Image Updated", Toast.LENGTH_SHORT).show();
-                    ivUser.setImageURI(user.getPhotoUrl());
-                }
+        .addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                FirebaseUser user = mAuth.getCurrentUser();
+                Toast.makeText(HomeActivity.this, "User Image Updated", Toast.LENGTH_SHORT).show();
+                ivUser.setImageURI(user.getPhotoUrl());
             }
         });
     }
@@ -78,7 +91,7 @@ public class HomeActivity extends BaseActivity {
     /**
      * Display the image to view element
      */
-    private void displayImage(Uri imgUri){
+    private void displayProfilePicture(Uri imgUri){
         if(imgUri !=null){
             Glide.with(this)
                     .load(imgUri)

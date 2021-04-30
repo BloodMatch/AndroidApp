@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,12 +51,17 @@ public abstract class BaseActivity extends AppCompatActivity {
             Intent i = new Intent(BaseActivity.this, ProfileActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
+        }else if(id == R.id.nav_update_profile){
+            Toast.makeText(BaseActivity.this, "Update Profile", Toast.LENGTH_SHORT).show();
+        }else if(id == R.id.nav_change_password){
+            Toast.makeText(BaseActivity.this, "Cahnge Password", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.nav_logout){
             FirebaseAuth.getInstance().signOut();
             Intent i = new Intent(BaseActivity.this, LoginActivity.class);
             startActivity(i);
             finish();
         }
+
         return true;
     }
 

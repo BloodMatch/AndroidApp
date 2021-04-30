@@ -6,79 +6,153 @@
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_register">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="209dp">
+        android:layout_height="318dp">
 
-        <!--time-->
-        <EditText
-            android:id="@+id/lastTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_text_input"
-            android:background="@drawable/bg_input_light_red"
-            android:inputType="date"
-            android:padding="10dp"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/lastTime_desc"
-            android:gravity="center"
-            />
 
-        <!--recency-->
-        <EditText
-            android:id="@+id/firstTime"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_text_input"
-            android:background="@drawable/bg_input_light_red"
-            android:inputType="date"
-            android:padding="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/firstTime_desc"
-            android:gravity="center"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="113dp"
+            tools:layout_editor_absoluteY="209dp">
 
-        <!--frequency-->
-        <EditText
-            android:id="@+id/frequency"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_text_input"
-            android:background="@drawable/bg_input_light_red"
-            android:inputType="numberDecimal"
-            android:padding="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/frequency_desc"
-            android:gravity="center"
-            />
+            <!--blood group-->
+            <RadioGroup
+                android:id="@+id/blood_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:orientation="horizontal"
+                >
+                        <RadioButton
+                            android:id="@+id/blood_ab"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/white"
+                            android:text="AB"
+                            android:textColor="@color/white" />
 
-        <!--quantity-->
-        <EditText
-            android:id="@+id/quantity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_top_text_input"
-            android:background="@drawable/bg_input_light_red"
-            android:inputType="numberDecimal"
-            android:padding="10dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/quantity_desc"
-            android:gravity="center"
-            />
-    </LinearLayout>
+                        <RadioButton
+                            android:id="@+id/blood_a"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/white"
+                            android:text="A"
+                            android:textColor="@color/white" />
 
+                        <RadioButton
+                            android:id="@+id/blood_b"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/white"
+                            android:text="B"
+                            android:textColor="@color/white" />
+
+                        <RadioButton
+                            android:id="@+id/blood_o"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/white"
+                            android:text="O"
+                            android:textColor="@color/white" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/rhesus_signe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="50dp"
+                android:orientation="horizontal"
+                >
+                <RadioButton
+                    android:id="@+id/rhesus_pos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/white"
+                    android:text="Rh+"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/rhesus_neg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/white"
+                    android:text="Rh-"
+                    android:textColor="@color/white" />
+            </RadioGroup>
+
+            <!--time-->
+            <EditText
+                android:id="@+id/lastTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_light_red"
+                android:inputType="date"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/lastTime_desc" />
+
+            <!--recency-->
+            <EditText
+                android:id="@+id/firstTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_text_input"
+                android:background="@drawable/bg_input_light_red"
+                android:inputType="date"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/firstTime_desc" />
+
+            <!--frequency-->
+            <EditText
+                android:id="@+id/frequency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_text_input"
+                android:background="@drawable/bg_input_light_red"
+                android:inputType="numberDecimal"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/frequency_desc" />
+
+            <!--quantity-->
+            <EditText
+                android:id="@+id/quantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_text_input"
+                android:background="@drawable/bg_input_light_red"
+                android:inputType="numberDecimal"
+                android:padding="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/quantity_desc" />
+        </LinearLayout>
+    </ScrollView>
     <ProgressBar
         android:id="@+id/loading"
         android:layout_width="wrap_content"

@@ -11,7 +11,7 @@ import java.util.Map;
 public class DonorCollection {
     protected  DonorModel donorModel;
     private static FirebaseFirestore db;
-    private static String collectionName;
+    private static final String collectionName;
 
     static {
         db = FirebaseFirestore.getInstance();
@@ -24,13 +24,13 @@ public class DonorCollection {
         return donorModel;
     }
 
-    public static Task <DocumentSnapshot> selectDocument(String email){
-        return  db.collection("donors").document(email)
+    public static Task <DocumentSnapshot> selectDocument(String id){
+        return  db.collection(collectionName).document(id)
                 .get();
     }
 
-    public Task<Void> insertDocument(String email){
-        return  db.collection("donors").document(email)
+    public Task<Void> insertDocument(String id){
+        return  db.collection(collectionName).document(id)
                 .set(donorModel);
     }
 }

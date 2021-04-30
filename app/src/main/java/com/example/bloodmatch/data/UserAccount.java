@@ -11,7 +11,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.ByteArrayOutputStream;
 
 public class UserAccount {
@@ -108,6 +107,7 @@ public class UserAccount {
     public Task<Void> sendPasswordReset() {
         return mAuth.sendPasswordResetEmail(userModel.getEmail());
     }
+
 
     public Task<AuthResult> createAccount() {
         return mAuth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getPassword());

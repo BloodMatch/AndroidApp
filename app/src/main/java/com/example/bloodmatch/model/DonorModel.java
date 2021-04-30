@@ -3,11 +3,17 @@ package com.example.bloodmatch.model;
 import java.io.Serializable;
 
 public class DonorModel implements Serializable {
+    //private String id;
     private String cin, gender, birthDate, city,
-    firstTime, lastTime, bloodGroup;
+    firstTime, lastTime;
+    private Blood blood;
     private Integer zipCode, frequency, quantity;
 
     public DonorModel(){ super(); }
+
+    //public String getId() { return id; }
+
+    //public void setId(String id) { this.id = id; }
 
     public String getCin() { return cin; }
 
@@ -29,9 +35,9 @@ public class DonorModel implements Serializable {
 
     public void setZipCode(Integer zipCode) { this.zipCode = zipCode; }
 
-    public String getBloodGroup(){ return bloodGroup; }
+    public Blood getBlood(){ return blood; }
 
-    public void setBloodGroup(String bloodGroup) { this.bloodGroup = bloodGroup; }
+    public void setBlood(Blood blood) { this.blood = blood; }
 
     public String getFirstTime() { return firstTime; }
 
