@@ -28,8 +28,6 @@ public class HomeActivity extends BaseActivity {
     private TextView tvUserName, tvUserBloodGroup;
     private FirebaseAuth mAuth;
     private DonorModel donor;
-    private FirebaseFirestore db;
-    private FirebaseStorage storage;
 
     /**
      * Should implement this method to have a navbar
@@ -44,16 +42,14 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        db = FirebaseFirestore.getInstance();
-        storage = FirebaseStorage.getInstance();
 
         checkLogin(user);
 
         ivUser = findViewById(R.id.user_image);
         tvUserName = findViewById(R.id.user_name);
         tvUserBloodGroup = findViewById(R.id.user_bloodGroup);
-
-        displayImage();
+        tvUserName.setText(user.getDisplayName());
+        displayImage(user.getPhotoUrl());
 
         // Get user Document
         DonorFirebase.selectDocument(user.getEmail())
@@ -62,7 +58,6 @@ public class HomeActivity extends BaseActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         donor = documentSnapshot.toObject(DonorModel.class);
                         tvUserBloodGroup.setText(donor.getBloodGroup());
-                        tvUserName.setText(user.getDisplayName());
                     }
                 });
     }
@@ -85,14 +80,11 @@ public class HomeActivity extends BaseActivity {
     /**
      * Display the image to view element
      */
-    private void displayImage(){
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user.getPhotoUrl() !=null){
+    private void displayImage(Uri imgUri){
+        if(imgUri !=null){
             Glide.with(this)
-                    .load(user.getPhotoUrl())
+                    .load(imgUri)
                     .into(ivUser);
         }
     }
-
-
 }

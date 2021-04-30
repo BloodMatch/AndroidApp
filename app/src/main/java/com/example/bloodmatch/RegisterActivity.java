@@ -212,7 +212,7 @@ public class RegisterActivity extends AppCompatActivity {
                     donorFirebase.insertDocument(user.getEmail()).addOnSuccessListener(aVoid -> {
                         Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
                         // set default image profile
-                        setDefaultPhoto();
+                        setupUser(user.getDisplayName());
                     });
 
                 } else {
@@ -236,34 +236,23 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     /**
-     * Get image Uri from FirebaseStorage
+     * Set up user default image and display name
      * */
-    private void setDefaultPhoto(){
-       UserFirebase.getPhotoUrl("default-avatar.png")
+    private void setupUser(String displayName){
+        UserFirebase.getPhotoUrl("default-avatar.png")
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Toast.makeText(RegisterActivity.this, "Image url retreved", Toast.LENGTH_SHORT).show();
-                        UserFirebase.updatePhotoUrl(uri)
+                        UserFirebase.updateProfile(displayName, uri)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(RegisterActivity.this, "Image updated", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                finish();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegisterActivity.this, "Image failed", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(RegisterActivity.this, "Failed to getUri", Toast.LENGTH_SHORT).show();
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(RegisterActivity.this, "Image updated", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                        finish();
+                                    }
+                                });
                     }
                 });
     }

@@ -10,6 +10,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.ByteArrayOutputStream;
 
 public class UserFirebase {
     protected  UserModel userModel;
@@ -31,20 +34,43 @@ public class UserFirebase {
      * Get image Uri from FirebaseStorage
      * */
     public static Task<Uri> getPhotoUrl(String endPoint){
-        FirebaseUser user = mAuth.getCurrentUser();
         StorageReference profileImageRef = storage.getReference().child("profile/"+endPoint);
 
         return profileImageRef.getDownloadUrl();
     }
 
-    public void updateDisplayName() {
+    /**
+     * Upload user photo from local file
+     */
+    public static UploadTask uploadPhoto(Uri photoUri){
+        FirebaseUser user = mAuth.getCurrentUser();
+        StorageReference ref = storage.getReference().child("profile/"+user.getUid()+".jpeg");
+
+        return ref.putFile(photoUri);
+    }
+
+    /**
+     * Upload user photo from data memory
+     */
+    public static UploadTask uploadPhoto(ByteArrayOutputStream baos){
+        FirebaseUser user = mAuth.getCurrentUser();
+        StorageReference ref = storage.getReference().child("profile/"+user.getUid()+".jpeg");
+        byte[] data = baos.toByteArray();
+
+        return ref.putBytes(data);
+    }
+
+    /**
+     * Set user display name
+     * */
+    public static Task<Void> updateDisplayName(String displayName) {
         FirebaseUser user = mAuth.getCurrentUser();
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(userModel.getDisplayName())
+                .setDisplayName(displayName)
                 .build();
-
-        user.updateProfile(profileUpdates);
+        return user.updateProfile(profileUpdates);
     }
+
 
     /**
      * Set user profile image
@@ -60,6 +86,18 @@ public class UserFirebase {
     public Task<Void> updatePassword() {
         FirebaseUser user = mAuth.getCurrentUser();
         return user.updatePassword(userModel.getPassword());
+    }
+
+    /**
+     * Set user photo and display Name in one request
+     * */
+    public static Task<Void> updateProfile(String displayName, Uri uri){
+        FirebaseUser user = mAuth.getCurrentUser();
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setPhotoUri(uri)
+                .setDisplayName(displayName)
+                .build();
+        return user.updateProfile(profileUpdates);
     }
 
     public static Task<Void> sendEmailVerification() {

@@ -29,9 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
 
         // check  if user is alreadyLogged
-        isAlreadyLogged();
+        isAlreadyLogged(user);
 
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
@@ -75,7 +76,11 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Incorrect email or password !", Toast.LENGTH_SHORT).show();
                             forgotPasswordTextView.setVisibility(View.VISIBLE);
                         }else{
-                            UpdateUI();
+                            if(user.isEmailVerified()){
+                                UpdateUI();
+                            }else{
+                                Toast.makeText(LoginActivity.this, "Please verify your email address.", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
@@ -83,9 +88,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void isAlreadyLogged(){
-        FirebaseUser user = mAuth.getCurrentUser();
-        if(user != null){
+    private void isAlreadyLogged(FirebaseUser user){
+        if(user != null && user.isEmailVerified()){
             UpdateUI();
         }
     }

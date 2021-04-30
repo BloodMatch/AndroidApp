@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/profile_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Spinner
+            android:id="@+id/blood_spinner"
+            android:layout_width="248dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_input_light_red"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/edemail"
+            android:layout_width="248dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="10dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_input_light_red"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/edcin"
+            android:layout_width="248dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_input_light_red"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/edbirthday"
+            android:layout_width="248dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_date"
+            android:drawablePadding="10dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_input_light_red"
+            android:inputType="date"
+            android:padding="10dp"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/edcity"
+            android:layout_width="248dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/ic_location_city"
+            android:drawablePadding="10dp"
+            android:autofillHints=""
+            android:background="@drawable/bg_input_light_red"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColorHint="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/button_save"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_input_white"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@color/blood_color" />
+
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".7"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_input_light_red"
+                android:text="@string/cancel_button_text"
+                android:textAllCaps="false"
+                android:textColor="@color/blood_color" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

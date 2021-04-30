@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DisplayProfileFragment">
+
+    <LinearLayout
+        android:id="@+id/profile_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvcin"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvemail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tvbirthDate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/ic_date"
+            android:drawablePadding="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tvgender"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:drawableStart="@drawable/ic_faces"
+            android:drawablePadding="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tvcity"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@drawable/ic_location_city"
+            android:drawablePadding="10dp"
+            android:textSize="18dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/button_update"
+            android:layout_width="248dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_input_white"
+            android:text="@string/update"
+            android:textAllCaps="false"
+            android:textColor="@color/blood_color" />
+
+    </LinearLayout>
+
+</FrameLayout>
