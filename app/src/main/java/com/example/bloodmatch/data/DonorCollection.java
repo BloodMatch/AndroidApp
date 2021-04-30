@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DonorFirebase {
+public class DonorCollection {
     protected  DonorModel donorModel;
     private static FirebaseFirestore db;
     private static String collectionName;
@@ -18,7 +18,7 @@ public class DonorFirebase {
         collectionName = "donors";
     }
 
-    public DonorFirebase(DonorModel donorModel){ this.donorModel = donorModel; }
+    public DonorCollection(DonorModel donorModel){ this.donorModel = donorModel; }
 
     public DonorModel getDonorModel(){
         return donorModel;

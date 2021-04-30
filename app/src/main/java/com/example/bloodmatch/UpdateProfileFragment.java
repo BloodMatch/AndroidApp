@@ -19,7 +19,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.bloodmatch.data.DonorFirebase;
+import com.example.bloodmatch.data.DonorCollection;
 import com.example.bloodmatch.model.DonorModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -106,9 +106,9 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
             donor.setBirthDate(birthday);
             donor.setCity(city);
 
-            DonorFirebase donorFirebase = new DonorFirebase(donor);
+            DonorCollection donorCollection = new DonorCollection(donor);
 
-            donorFirebase.insertDocument(user.getEmail())
+            donorCollection.insertDocument(user.getEmail())
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(getActivity(), "Profile updated.", Toast.LENGTH_SHORT).show();
                         switchFragment(donor);

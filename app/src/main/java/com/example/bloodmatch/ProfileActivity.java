@@ -1,6 +1,5 @@
 package com.example.bloodmatch;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
@@ -9,16 +8,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,8 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
-import com.example.bloodmatch.data.DonorFirebase;
-import com.example.bloodmatch.data.UserFirebase;
+import com.example.bloodmatch.data.DonorCollection;
+import com.example.bloodmatch.data.UserAccount;
 import com.example.bloodmatch.model.DonorModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -74,7 +69,7 @@ public class ProfileActivity extends BaseActivity implements PopupMenu.OnMenuIte
         displayImage(user.getPhotoUrl());
 
         // Get user Document
-        DonorFirebase.selectDocument(user.getEmail())
+        DonorCollection.selectDocument(user.getEmail())
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -157,12 +152,12 @@ public class ProfileActivity extends BaseActivity implements PopupMenu.OnMenuIte
         pd.setTitle("Uploading Image ...");
         pd.show();
 
-        UserFirebase.uploadPhoto(imageUri)
+        UserAccount.uploadPhoto(imageUri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             pd.dismiss();
-                            UserFirebase.updatePhotoUrl(imageUri)
+                            UserAccount.updatePhotoUrl(imageUri)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
@@ -194,18 +189,18 @@ public class ProfileActivity extends BaseActivity implements PopupMenu.OnMenuIte
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
-        UserFirebase.uploadPhoto(baos)
+        UserAccount.uploadPhoto(baos)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         String imageRef = user.getUid()+".jpeg";
                         Toast.makeText(ProfileActivity.this, "Image taken.", Toast.LENGTH_SHORT).show();
-                        UserFirebase.getPhotoUrl(imageRef)
+                        UserAccount.getPhotoUrl(imageRef)
                                     .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
                                     public void onSuccess(Uri uri) {
-                                        UserFirebase.updatePhotoUrl(uri)
+                                        UserAccount.updatePhotoUrl(uri)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {

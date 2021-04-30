@@ -18,12 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.example.bloodmatch.data.DonorFirebase;
-import com.example.bloodmatch.data.UserFirebase;
+import com.example.bloodmatch.data.DonorCollection;
+import com.example.bloodmatch.data.UserAccount;
 import com.example.bloodmatch.model.DonorModel;
 import com.example.bloodmatch.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -202,14 +201,14 @@ public class RegisterActivity extends AppCompatActivity {
 
             loadingProgressBar.setVisibility(View.VISIBLE);
 
-            DonorFirebase donorFirebase = new DonorFirebase(donor);
-            UserFirebase userFirebase = new UserFirebase((user));
+            DonorCollection donorCollection = new DonorCollection(donor);
+            UserAccount userAccount = new UserAccount((user));
 
-            userFirebase.createAccount().addOnCompleteListener(RegisterActivity.this, task -> {
+            userAccount.createAccount().addOnCompleteListener(RegisterActivity.this, task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
-                    UserFirebase.sendEmailVerification();
-                    donorFirebase.insertDocument(user.getEmail()).addOnSuccessListener(aVoid -> {
+                    UserAccount.sendEmailVerification();
+                    donorCollection.insertDocument(user.getEmail()).addOnSuccessListener(aVoid -> {
                         Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
                         // set default image profile
                         setupUser(user.getDisplayName());
@@ -239,12 +238,12 @@ public class RegisterActivity extends AppCompatActivity {
      * Set up user default image and display name
      * */
     private void setupUser(String displayName){
-        UserFirebase.getPhotoUrl("default-avatar.png")
+        UserAccount.getPhotoUrl("default-avatar.png")
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Toast.makeText(RegisterActivity.this, "Image url retreved", Toast.LENGTH_SHORT).show();
-                        UserFirebase.updateProfile(displayName, uri)
+                        UserAccount.updateProfile(displayName, uri)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

@@ -14,12 +14,9 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.bloodmatch.data.DonorFirebase;
 import com.example.bloodmatch.model.DonorModel;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 
 public class DisplayProfileFragment extends Fragment {
 

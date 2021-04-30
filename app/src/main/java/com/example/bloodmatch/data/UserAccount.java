@@ -14,7 +14,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 
-public class UserFirebase {
+public class UserAccount {
     protected  UserModel userModel;
     private static FirebaseAuth  mAuth;
     private static FirebaseStorage storage;
@@ -23,9 +23,9 @@ public class UserFirebase {
         storage = FirebaseStorage.getInstance();
     }
 
-    public UserFirebase(){}
+    public UserAccount(){}
 
-    public UserFirebase(UserModel userModel){
+    public UserAccount(UserModel userModel){
         this.userModel = userModel;
     }
 

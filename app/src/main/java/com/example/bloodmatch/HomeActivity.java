@@ -11,15 +11,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.example.bloodmatch.data.DonorFirebase;
-import com.example.bloodmatch.data.UserFirebase;
+import com.example.bloodmatch.data.DonorCollection;
+import com.example.bloodmatch.data.UserAccount;
 import com.example.bloodmatch.model.DonorModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 
 // To have navbar the class should entend the BaseActivity abstract class
 public class HomeActivity extends BaseActivity {
@@ -52,7 +50,7 @@ public class HomeActivity extends BaseActivity {
         displayImage(user.getPhotoUrl());
 
         // Get user Document
-        DonorFirebase.selectDocument(user.getEmail())
+        DonorCollection.selectDocument(user.getEmail())
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -64,7 +62,7 @@ public class HomeActivity extends BaseActivity {
 
     /// Todo : should be in the Profile activity 
     public void updatePhotoUrl(Uri uri){
-        UserFirebase.updatePhotoUrl(uri)
+        UserAccount.updatePhotoUrl(uri)
         .addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
