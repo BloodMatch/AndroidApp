@@ -82,9 +82,9 @@ public class UserAccount {
         return user.updateProfile(profileUpdates);
     }
 
-    public Task<Void> updatePassword() {
+    public Task<Void> updatePassword(String password) {
         FirebaseUser user = mAuth.getCurrentUser();
-        return user.updatePassword(userModel.getPassword());
+        return user.updatePassword(password);
     }
 
     /**

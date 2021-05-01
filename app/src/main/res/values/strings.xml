@@ -40,6 +40,10 @@
     <string name="userimage">My image</string>
     <string name="camera">Take picture</string>
     <string name="gallery">Choose from gallery</string>
+    <string name="phone_call">Phone call</string>
+    <string name="text_message">Text message</string>
+    <string name="whatsApp">WhatsApp</string>
+    <string name="check_in">Check in</string>
 
     <string-array name="bloodGroups">
         <item>AB+</item>

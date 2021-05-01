@@ -42,6 +42,10 @@ public class DonorModel implements Serializable {
 
     //public void setId(String id) { this.id = id; }
 
+    public boolean getAvailable() { return available; }
+
+    public void setAvailable(boolean available) { this.available = available; }
+
     public String getCin() { return cin; }
 
     public void setCin(String cin) { this.cin = cin; }

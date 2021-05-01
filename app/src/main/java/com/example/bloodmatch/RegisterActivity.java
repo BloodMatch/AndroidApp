@@ -126,7 +126,7 @@ public class  RegisterActivity extends AppCompatActivity {
             }
 
             user.setDisplayName(fullName);
-            user.setEmail(email);
+            //user.setEmail(email);
             user.setPassword(password);
             donor.setPhoneNumber(phoneNumber);
 
