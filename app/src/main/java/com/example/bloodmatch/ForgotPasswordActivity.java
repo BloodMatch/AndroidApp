@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.bloodmatch.data.UserAccount;
-import com.example.bloodmatch.model.UserModel;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
@@ -36,11 +35,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            UserModel user = new UserModel();
-            user.setEmail(email);
-            UserAccount userAccount = new UserAccount(user);
-
-            userAccount.sendPasswordReset().addOnCompleteListener(task->{
+            UserAccount.sendPasswordReset(email).addOnCompleteListener(task->{
                 if(task.isSuccessful()){
                     Toast.makeText(ForgotPasswordActivity.this, "Reset email sent", Toast.LENGTH_SHORT).show();
                     new Handler().postDelayed(() -> {

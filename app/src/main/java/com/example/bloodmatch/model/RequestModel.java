@@ -1,12 +1,14 @@
 package com.example.bloodmatch.model;
 
 import com.google.firebase.firestore.DocumentReference;
+import com.example.bloodmatch.data.DonorCollection;
 
 public class RequestModel {
     private String benefit, location;
     private Blood blood;
     private Motivation motivation;
     private DocumentReference inNeed;
+    private DonorModel donor;
 
     public RequestModel(){}
 
@@ -48,5 +50,13 @@ public class RequestModel {
 
     public void setInNeed(DocumentReference inNeed) {
         this.inNeed = inNeed;
+    }
+
+    public DonorModel getRecipient(){
+        return donor;
+    }
+
+    public void setRecipient(){
+        DonorCollection.selectDocumentByRefrence(inNeed);
     }
 }

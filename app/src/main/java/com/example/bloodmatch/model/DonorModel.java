@@ -2,18 +2,13 @@ package com.example.bloodmatch.model;
 
 import java.io.Serializable;
 
-public class DonorModel implements Serializable {
+public class DonorModel extends UserModel implements Serializable {
     //private String id;
-    private String cin, gender, birthDate, city,
-    firstTime, lastTime;
+    private String cin, gender, birthDate, city, firstTime, lastTime;
     private Blood blood;
     private Integer zipCode, frequency, quantity;
 
     public DonorModel(){ super(); }
-
-    //public String getId() { return id; }
-
-    //public void setId(String id) { this.id = id; }
 
     public String getCin() { return cin; }
 

@@ -93,9 +93,7 @@ public class MakeRequestActivity extends BaseActivity {
             requestModel.setLocation(where);
             requestModel.setMotivation(motivationModel);
 
-            RequestCollection requestCollection = new RequestCollection(requestModel);
-
-            requestCollection.insertDocument()
+            RequestCollection.insertDocument(requestModel)
                 .addOnSuccessListener(aVoid->{
                     Toast.makeText(MakeRequestActivity.this, "Request added successfully", Toast.LENGTH_SHORT).show();
                     finish();
