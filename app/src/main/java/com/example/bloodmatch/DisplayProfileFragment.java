@@ -23,7 +23,7 @@ public class DisplayProfileFragment extends Fragment {
     private FirebaseAuth mAuth;
     private DonorModel donor;
 
-    private TextView tvemail, tvcin, tvgender, tvbirthDate, tvcity;
+    private TextView tvemail, tvcin , tvphone, tvgender, tvbirthDate, tvcity;
     private Button updateButton;
 
     private View.OnClickListener changeFaragment;
@@ -59,6 +59,7 @@ public class DisplayProfileFragment extends Fragment {
         tvgender = getView().findViewById(R.id.tvgender);
         tvbirthDate = getView().findViewById(R.id.tvbirthDate);
         tvcity = getView().findViewById(R.id.tvcity);
+        tvphone = getView().findViewById(R.id.tvphone);
         updateButton = getView().findViewById(R.id.button_update);
 
         changeFaragment = v -> {
@@ -73,8 +74,9 @@ public class DisplayProfileFragment extends Fragment {
         tvemail.setText(user.getEmail());
         tvcin.setText(donor.getCin());
         tvbirthDate.setText(donor.getBirthDate());
-        tvcity.setText(donor.getCity());
         tvgender.setText(donor.getGender());
+        tvphone.setText(donor.getPhoneNumber());
+        tvcity.setText(donor.getCity());
 
         updateButton.setOnClickListener(changeFaragment);
     }

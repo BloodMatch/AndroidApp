@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="hint_text">#EDABAB</color>
+    <color name="light_red">#EF6665</color>
     <color name="blood_color">#ED4240</color>
     <color name="blood_white">#FFFAFA</color>
     <color name="blood_maron">#312526</color>

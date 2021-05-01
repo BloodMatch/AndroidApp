@@ -46,6 +46,8 @@ public class  RegisterActivity extends AppCompatActivity {
     private View.OnClickListener stepOneActionListener, stepTwoActionListener, stepThreeActionListener;
     private Button continueButton;
 
+    private String email, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,10 +78,9 @@ public class  RegisterActivity extends AppCompatActivity {
         quantityEditText = findViewById(R.id.quantity);
 
         DonorModel donor = new DonorModel();
-        UserModel user = new UserModel();
 
         stepOneActionListener = v -> {
-            String fullName, phoneNumber, email, password, confirmPassword;
+            String fullName, phoneNumber, confirmPassword;
             fullName = fullNameEditText.getText().toString();
             if( fullName.isEmpty() ){
                 fullNameEditText.setError("Please enter your full name !");
@@ -125,11 +126,9 @@ public class  RegisterActivity extends AppCompatActivity {
                 return;
             }
 
-            user.setDisplayName(fullName);
-            user.setPhoneNumber(phoneNumber);
-            user.setEmail(email);
-            user.setPassword(password);
-
+            donor.setDisplayName(fullName);
+            donor.setPhoneNumber(phoneNumber);
+            
             //update onclick listener 1->2
             continueButton.setOnClickListener(stepTwoActionListener);
             nextStep();
@@ -184,6 +183,7 @@ public class  RegisterActivity extends AppCompatActivity {
             continueButton.setOnClickListener(stepThreeActionListener);
             nextStep();
         };
+
         stepThreeActionListener = v -> {
             String btype, brhesus, firstTime, lastTime;
             String sfrequency, squantity;
@@ -221,34 +221,35 @@ public class  RegisterActivity extends AppCompatActivity {
                 quantity = Integer.parseInt(squantity);
             }
 
-            Blood blood=new Blood();
+
+            Blood blood = new Blood();
             blood.setType(btype);
             blood.setRhesus(Character.toString(brhesus.charAt(2)));
             donor.setBlood(blood);
-            donor.setFirstTime(firstTime);
-            donor.setLastTime(lastTime);
-            donor.setFrequency(frequency);
-            donor.setQuantity(quantity);
+
+            DonorModel.Donation donation = donor.getDonation();
+            donation.setFirstTime(firstTime);
+            donation.setLastTime(lastTime);
+            donation.setFrequency(frequency);
+            donation.setQuantity(quantity);
+            donor.setDonation(donation);
 
             loadingProgressBar.setVisibility(View.VISIBLE);
-
-            DonorCollection donorCollection = new DonorCollection(donor);
-            UserAccount userAccount = new UserAccount(user);
-
-            userAccount.createAccount().addOnCompleteListener(RegisterActivity.this, task -> {
-                if (task.isSuccessful()) {
-                    Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
-                    UserAccount.sendEmailVerification();
-                    donorCollection.insertDocument(user.getEmail()).addOnSuccessListener(aVoid -> {
-                        Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
-                        // set default image profile
-                        setupUser(user.getDisplayName());
-                    });
-
-                } else {
-                    Log.d(TAG, "createAccount:failure");
-                }
-                loadingProgressBar.setVisibility(View.GONE);
+            
+            UserAccount.createAccount(email, password)
+                .addOnCompleteListener(RegisterActivity.this, task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
+                        UserAccount.sendEmailVerification();
+                        DonorCollection.insertDocument(email, donor).addOnSuccessListener(aVoid -> {
+                            Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
+                            // set default image profile
+                            setupUser(donor.getDisplayName());
+                        });
+                    } else {
+                        Log.d(TAG, "createAccount:failure");
+                    }
+                    loadingProgressBar.setVisibility(View.GONE);
             });
         };
 

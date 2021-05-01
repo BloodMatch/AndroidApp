@@ -20,7 +20,7 @@
                 android:id="@+id/app_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#EA3A4A"
+                android:background="@color/blood_color"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:menu="@menu/app_menu"

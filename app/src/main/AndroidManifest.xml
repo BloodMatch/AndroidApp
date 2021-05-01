@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodMatch">
         <activity android:name=".RequestListActivity"></activity>
+        <activity android:name=".DonorProfileActivity"></activity>
         <activity android:name=".MakeRequestActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />

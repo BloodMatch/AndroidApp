@@ -52,6 +52,16 @@
             android:layout_gravity="center" />
 
         <TextView
+            android:id="@+id/tvphone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:drawableStart="@android:drawable/ic_menu_call"
+            android:drawablePadding="10dp"
+            android:textSize="18dp" />
+
+        <TextView
             android:id="@+id/tvcity"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
