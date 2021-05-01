@@ -126,9 +126,9 @@ public class  RegisterActivity extends AppCompatActivity {
             }
 
             user.setDisplayName(fullName);
-            user.setPhoneNumber(phoneNumber);
             user.setEmail(email);
             user.setPassword(password);
+            donor.setPhoneNumber(phoneNumber);
 
             //update onclick listener 1->2
             continueButton.setOnClickListener(stepTwoActionListener);
@@ -221,14 +221,18 @@ public class  RegisterActivity extends AppCompatActivity {
                 quantity = Integer.parseInt(squantity);
             }
 
-            Blood blood=new Blood();
+
+            Blood blood = new Blood();
             blood.setType(btype);
             blood.setRhesus(Character.toString(brhesus.charAt(2)));
             donor.setBlood(blood);
-            donor.setFirstTime(firstTime);
-            donor.setLastTime(lastTime);
-            donor.setFrequency(frequency);
-            donor.setQuantity(quantity);
+
+            DonorModel.Donation donation = donor.getDonation();
+            donation.setFirstTime(firstTime);
+            donation.setLastTime(lastTime);
+            donation.setFrequency(frequency);
+            donation.setQuantity(quantity);
+            donor.setDonation(donation);
 
             loadingProgressBar.setVisibility(View.VISIBLE);
 

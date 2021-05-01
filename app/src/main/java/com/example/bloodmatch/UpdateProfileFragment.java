@@ -29,7 +29,7 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
     private FirebaseAuth mAuth;
     private DonorModel donor;
     private Button saveButton, cancelButton;
-    private EditText edemail, edcin, edbirthday, edcity;
+    private EditText  edcin, edbirthday, edcity, edphone;
     private Spinner spinnerBlood;
     private View.OnClickListener updateDonor, cancel;
 
@@ -61,10 +61,10 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
 
         saveButton = getView().findViewById(R.id.button_save);
         cancelButton = getView().findViewById(R.id.button_cancel);
-        edemail = getView().findViewById(R.id.edemail);
         edcin = getView().findViewById(R.id.edcin);
         edbirthday = getView().findViewById(R.id.edbirthday);
         edcity = getView().findViewById(R.id.edcity);
+        edphone = getView().findViewById(R.id.edphone);
 
         spinnerBlood = getView().findViewById(R.id.blood_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(), R.array.bloodGroups, android.R.layout.simple_spinner_item);
@@ -77,12 +77,7 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
         bindInputs(user);
 
         updateDonor = v -> {
-            String email, city, birthday, cin;
-            email = edemail.getText().toString();
-            if( email.isEmpty() ){
-                edemail.setError("Please enter an email");
-                return;
-            }
+            String  city, birthday, cin, phone;
 
             city = edcity.getText().toString();
             if( city.isEmpty() ){
@@ -98,13 +93,20 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
 
             cin = edcin.getText().toString();
             if( cin.isEmpty() ){
-                edemail.setError("Please enter your Cin");
+                edcin.setError("Please enter your Cin");
+                return;
+            }
+
+            phone = edphone.getText().toString();
+            if( phone.isEmpty() ){
+                edphone.setError("Please enter your Phone number");
                 return;
             }
 
             donor.setCin(cin);
             donor.setBirthDate(birthday);
             donor.setCity(city);
+            donor.setPhoneNumber(phone);
 
             DonorCollection donorCollection = new DonorCollection(donor);
 
@@ -130,10 +132,10 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
     }
 
     private void bindInputs(FirebaseUser user){
-        edemail.setText(user.getEmail());
         edbirthday.setText(donor.getBirthDate());
         edcin.setText(donor.getCin());
         edcity.setText(donor.getCity());
+        edphone.setText(donor.getPhoneNumber());
     }
 
     private void switchFragment(DonorModel donor){

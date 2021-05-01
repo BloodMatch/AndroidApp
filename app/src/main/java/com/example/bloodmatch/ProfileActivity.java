@@ -74,9 +74,9 @@ public class ProfileActivity extends BaseActivity implements PopupMenu.OnMenuIte
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         DonorModel donor = documentSnapshot.toObject(DonorModel.class);
-                        tvdonation.setText(donor.getFrequency().toString());
+                        tvdonation.setText(String.valueOf( donor.getDonation().getFrequency().toString()));
                         tvboold.setText(donor.getBlood().toString());
-                        tvunit.setText(donor.getQuantity().toString());
+                        tvunit.setText(String.valueOf(donor.getDonation().getQuantity().toString()));
                         loadFragment(donor);
                     }
                 });

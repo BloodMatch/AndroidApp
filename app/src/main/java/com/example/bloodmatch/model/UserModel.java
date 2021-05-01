@@ -3,7 +3,7 @@ package com.example.bloodmatch.model;
 import android.net.Uri;
 
 public class UserModel {
-    private String DisplayName, Email, IsEmailVerified,  PhoneNumber, Password;
+    private String DisplayName, Email, IsEmailVerified, Password;
     private Uri  PhotoUrl;
 
     public  UserModel(){}
@@ -30,14 +30,6 @@ public class UserModel {
 
     public String getPassword() {
         return Password;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        PhoneNumber = phoneNumber;
-    }
-
-    public String getPhoneNumber() {
-        return PhoneNumber;
     }
 
     public void setPhotoUrl(String photoUrl) {

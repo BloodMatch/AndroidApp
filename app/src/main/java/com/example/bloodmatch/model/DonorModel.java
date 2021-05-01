@@ -4,12 +4,39 @@ import java.io.Serializable;
 
 public class DonorModel implements Serializable {
     //private String id;
-    private String cin, gender, birthDate, city,
-    firstTime, lastTime;
+    private String cin, phoneNumber, gender, birthDate, city;
+    private boolean available = true;
+    private Donation donation;
     private Blood blood;
-    private Integer zipCode, frequency, quantity;
+    private Integer zipCode;
 
-    public DonorModel(){ super(); }
+    public static class Donation{
+        private String firstTime, lastTime;
+        private Integer frequency, quantity;
+
+        public Donation(){ }
+
+        public String getFirstTime() { return firstTime; }
+
+        public void setFirstTime(String firstTime) { this.firstTime = firstTime; }
+
+        public Integer getQuantity() { return quantity; }
+
+        public void setQuantity(Integer quantity) { this.quantity = quantity; }
+
+        public Integer getFrequency() { return frequency; }
+
+        public void setFrequency(Integer frequency) { this.frequency = frequency; }
+
+        public String getLastTime() { return lastTime; }
+
+        public void setLastTime(String lastTime) { this.lastTime = lastTime; }
+    }
+
+    public DonorModel(){
+        super();
+        this.donation = new Donation();
+    }
 
     //public String getId() { return id; }
 
@@ -18,6 +45,10 @@ public class DonorModel implements Serializable {
     public String getCin() { return cin; }
 
     public void setCin(String cin) { this.cin = cin; }
+
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+
+    public String getPhoneNumber() { return phoneNumber; }
 
     public String getGender() { return gender; }
 
@@ -39,19 +70,8 @@ public class DonorModel implements Serializable {
 
     public void setBlood(Blood blood) { this.blood = blood; }
 
-    public String getFirstTime() { return firstTime; }
+    public Donation getDonation() { return donation; }
 
-    public void setFirstTime(String firstTime) { this.firstTime = firstTime; }
+    public void setDonation(Donation donation) { this.donation = donation; }
 
-    public Integer getQuantity() { return quantity; }
-
-    public void setQuantity(Integer quantity) { this.quantity = quantity; }
-
-    public Integer getFrequency() { return frequency; }
-
-    public void setFrequency(Integer frequency) { this.frequency = frequency; }
-
-    public String getLastTime() { return lastTime; }
-
-    public void setLastTime(String lastTime) { this.lastTime = lastTime; }
 }
