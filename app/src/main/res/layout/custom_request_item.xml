@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/blood_white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/recipient_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_person"
+        app:civ_border_color="@color/blood_color"
+        app:civ_border_width="2dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight=".4"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/recipient_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight=".6"
+            android:text="Aniss Nahim"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="center|left"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="11sp"
+            android:text="Hopital mansour, Marrkech - 40 0000"
+            android:gravity="center|left|top"
+            android:textColor="@color/blood_color"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight=".8"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="12:30"
+            android:textColor="@color/blood_maron"/>
+
+        <TextView
+            android:id="@+id/requested_blood"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="O+"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blood_color"/>
+    </LinearLayout>
+
+</LinearLayout>

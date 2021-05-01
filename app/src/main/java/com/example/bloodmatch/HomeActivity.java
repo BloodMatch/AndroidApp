@@ -76,18 +76,6 @@ public class HomeActivity extends BaseActivity {
         });
     }
 
-    /// Todo : should be in the Profile activity 
-    public void updatePhotoUrl(Uri uri){
-        UserAccount.updatePhotoUrl(uri)
-        .addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-                Toast.makeText(HomeActivity.this, "User Image Updated", Toast.LENGTH_SHORT).show();
-                ivUser.setImageURI(user.getPhotoUrl());
-            }
-        });
-    }
-
     /**
      * Display the image to view element
      */
