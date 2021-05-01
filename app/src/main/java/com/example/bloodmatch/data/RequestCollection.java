@@ -12,7 +12,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RequestCollection {
     private static FirebaseAuth mAuth;
     private static FirebaseFirestore db;
-    protected RequestModel requestModel;
     private static final String collectionName;
 
     static {
@@ -22,14 +21,13 @@ public class RequestCollection {
     }
 
     public RequestCollection(){ }
-    public RequestCollection(RequestModel requestModel){ this.requestModel = requestModel; }
 
     public static Task<DocumentSnapshot> selectDocument(String id){
         return  db.collection("donors").document(id)
                 .get();
     }
 
-    public Task<DocumentReference> insertDocument(){
+    public static Task<DocumentReference> insertDocument(RequestModel requestModel){
         FirebaseUser user = mAuth.getCurrentUser();
         DocumentReference creator = db.collection("donors").document(user.getEmail());
 

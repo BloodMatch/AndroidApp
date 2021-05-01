@@ -108,9 +108,7 @@ public class UpdateProfileFragment extends Fragment implements AdapterView.OnIte
             donor.setCity(city);
             donor.setPhoneNumber(phone);
 
-            DonorCollection donorCollection = new DonorCollection(donor);
-
-            donorCollection.insertDocument(user.getEmail())
+            DonorCollection.insertDocument(user.getEmail(), donor)
                     .addOnSuccessListener(aVoid -> {
                         Toast.makeText(getActivity(), "Profile updated.", Toast.LENGTH_SHORT).show();
                         switchFragment(donor);

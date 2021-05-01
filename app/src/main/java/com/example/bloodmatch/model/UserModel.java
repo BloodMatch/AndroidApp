@@ -3,48 +3,31 @@ package com.example.bloodmatch.model;
 import android.net.Uri;
 
 public class UserModel {
-    private String DisplayName, Email, IsEmailVerified, Password;
-    private Uri  PhotoUrl;
+    private String displayName, phoneNumber, photoUrl;
 
     public  UserModel(){}
 
     public void setDisplayName(String displayName) {
-        DisplayName = displayName;
+        this.displayName = displayName;
     }
 
     public String getDisplayName() {
-        return DisplayName;
+        return displayName;
     }
 
-    public void setEmail(String email) {
-        Email = email;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public String getPassword() {
-        return Password;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setPhotoUrl(String photoUrl) {
-        PhotoUrl = PhotoUrl;
+        this.photoUrl = photoUrl;
     }
 
-    public Uri getPhotoUrl() {
-        return PhotoUrl;
-    }
-
-    public void setIsEmailVerified(String isEmailVerified) {
-        IsEmailVerified = isEmailVerified;
-    }
-
-    public String getIsEmailVerified() {
-        return IsEmailVerified;
+    public String getPhotoUrl() {
+        return photoUrl;
     }
 }

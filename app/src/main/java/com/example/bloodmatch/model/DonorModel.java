@@ -2,9 +2,9 @@ package com.example.bloodmatch.model;
 
 import java.io.Serializable;
 
-public class DonorModel implements Serializable {
+public class DonorModel extends UserModel implements Serializable {
     //private String id;
-    private String cin, phoneNumber, gender, birthDate, city;
+    private String cin, gender, birthDate, city;
     private boolean available = true;
     private Donation donation;
     private Blood blood;
@@ -37,10 +37,6 @@ public class DonorModel implements Serializable {
         super();
         this.donation = new Donation();
     }
-
-    //public String getId() { return id; }
-
-    //public void setId(String id) { this.id = id; }
 
     public boolean getAvailable() { return available; }
 

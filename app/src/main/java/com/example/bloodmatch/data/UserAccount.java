@@ -2,7 +2,6 @@ package com.example.bloodmatch.data;
 
 import android.net.Uri;
 
-import com.example.bloodmatch.model.UserModel;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,7 +13,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 
 public class UserAccount {
-    protected  UserModel userModel;
     private static FirebaseAuth  mAuth;
     private static FirebaseStorage storage;
     static {
@@ -23,11 +21,6 @@ public class UserAccount {
     }
 
     public UserAccount(){}
-
-    public UserAccount(UserModel userModel){
-        this.userModel = userModel;
-    }
-
 
     /**
      * Get image Uri from FirebaseStorage
@@ -82,7 +75,7 @@ public class UserAccount {
         return user.updateProfile(profileUpdates);
     }
 
-    public Task<Void> updatePassword(String password) {
+    public static Task<Void> updatePassword(String password) {
         FirebaseUser user = mAuth.getCurrentUser();
         return user.updatePassword(password);
     }
@@ -104,13 +97,12 @@ public class UserAccount {
         return user.sendEmailVerification();
     }
 
-    public Task<Void> sendPasswordReset() {
-        return mAuth.sendPasswordResetEmail(userModel.getEmail());
+    public static Task<Void> sendPasswordReset(String email) {
+        return mAuth.sendPasswordResetEmail(email);
     }
 
-
-    public Task<AuthResult> createAccount() {
-        return mAuth.createUserWithEmailAndPassword(userModel.getEmail(), userModel.getPassword());
+    public static Task<AuthResult> createAccount(String email, String password) {
+        return mAuth.createUserWithEmailAndPassword(email, password);
     }
 
     public static Task<AuthResult> signIn(String email, String password) {
