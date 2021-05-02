@@ -96,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_input_light_red"
                 android:inputType="date"
+                android:ems="10"
                 android:padding="10dp" />
 
             <TextView
@@ -112,6 +113,7 @@
                 android:layout_marginTop="@dimen/margin_top_text_input"
                 android:background="@drawable/bg_input_light_red"
                 android:inputType="date"
+                android:ems="10"
                 android:padding="10dp" />
 
             <TextView

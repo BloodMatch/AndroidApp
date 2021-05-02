@@ -54,7 +54,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         }else if(id == R.id.nav_update_profile){
             Toast.makeText(BaseActivity.this, "Update Profile", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.nav_change_password){
-            Toast.makeText(BaseActivity.this, "Cahnge Password", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(BaseActivity.this, ChangePasswordActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(i);
+            //Toast.makeText(BaseActivity.this, "Change Password", Toast.LENGTH_SHORT).show();
         }else if(id == R.id.nav_logout){
             FirebaseAuth.getInstance().signOut();
             Intent i = new Intent(BaseActivity.this, LoginActivity.class);

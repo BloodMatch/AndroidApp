@@ -3,6 +3,7 @@
     package="com.example.bloodmatch">
 
     <uses-permission android:name="android.permisson.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -12,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodMatch">
-        <activity android:name=".DonorProfileActivity"></activity>
+        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".DonorProfileActivity" />
         <activity android:name=".MakeRequestActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Register" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".BaseActivity" />

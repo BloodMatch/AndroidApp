@@ -8,12 +8,14 @@
     <LinearLayout
         android:id="@+id/profile_data"
         android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/margin_leftRight_text_input"
+        android:layout_marginEnd="@dimen/margin_leftRight_text_input"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvcin"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawableStart="@drawable/ic_person"
@@ -23,7 +25,7 @@
 
         <TextView
             android:id="@+id/tvemail"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawableStart="@drawable/ic_baseline_email_24"
@@ -33,7 +35,7 @@
 
         <TextView
             android:id="@+id/tvbirthDate"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawableStart="@drawable/ic_date"
@@ -43,7 +45,7 @@
 
         <TextView
             android:id="@+id/tvgender"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:drawableStart="@drawable/ic_faces"
@@ -53,17 +55,17 @@
 
         <TextView
             android:id="@+id/tvphone"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:drawableStart="@android:drawable/ic_menu_call"
-            android:drawablePadding="10dp"
+            android:drawablePadding="0dp"
             android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tvcity"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:drawableStart="@drawable/ic_location_city"
@@ -73,7 +75,7 @@
 
         <Button
             android:id="@+id/button_update"
-            android:layout_width="248dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center"

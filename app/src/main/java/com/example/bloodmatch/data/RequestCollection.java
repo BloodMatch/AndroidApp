@@ -23,7 +23,7 @@ public class RequestCollection {
     public RequestCollection(){ }
 
     public static Task<DocumentSnapshot> selectDocument(String id){
-        return  db.collection("donors").document(id)
+        return  db.collection(collectionName).document(id)
                 .get();
     }
 

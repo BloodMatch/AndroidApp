@@ -46,10 +46,6 @@ public class DonorModel extends UserModel implements Serializable {
 
     public void setCin(String cin) { this.cin = cin; }
 
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
-
-    public String getPhoneNumber() { return phoneNumber; }
-
     public String getGender() { return gender; }
 
     public void setGender(String gender) { this.gender = gender; }

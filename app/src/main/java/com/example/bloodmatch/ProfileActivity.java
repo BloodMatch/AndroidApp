@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -195,20 +196,21 @@ public class ProfileActivity extends BaseActivity implements PopupMenu.OnMenuIte
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         FirebaseUser user = mAuth.getCurrentUser();
                         String imageRef = user.getUid()+".jpeg";
-                        Toast.makeText(ProfileActivity.this, "Image taken.", Toast.LENGTH_SHORT).show();
+                        DonorCollection.updatePhotoUrl(imageRef);
+                        Toast.makeText(ProfileActivity.this, "Image taken."+imageRef, Toast.LENGTH_SHORT).show();
                         UserAccount.getPhotoUrl(imageRef)
-                                    .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        UserAccount.updatePhotoUrl(uri)
-                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        Toast.makeText(ProfileActivity.this, "Image Updated.", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                    }
-                                });
+                                .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    UserAccount.updatePhotoUrl(uri)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Toast.makeText(ProfileActivity.this, "Image Updated.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                }
+                            });
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

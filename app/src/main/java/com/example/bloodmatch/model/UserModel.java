@@ -3,7 +3,7 @@ package com.example.bloodmatch.model;
 import android.net.Uri;
 
 public class UserModel {
-    private String displayName, phoneNumber, photoUrl;
+    protected String displayName, phoneNumber, photoUrl;
 
     public  UserModel(){}
 

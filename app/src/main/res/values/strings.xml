@@ -3,6 +3,9 @@
     <string name="organization_name">BloodMatch</string>
     <string name="email_prompt">Email</string>
     <string name="password_prompt">Password</string>
+    <string name="current_password_prompt">Current password</string>
+    <string name="new_password_prompt">New password</string>
+    <string name="confirm_password_prompt">Confirm new password</string>
     <string name="forget_password">Forget Password ?</string>
     <string name="sign_in_button">Login</string>
     <string name="sign_in_title">Sign In</string>

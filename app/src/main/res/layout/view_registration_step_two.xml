@@ -56,6 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="birth date"
+            android:ems="10"
             android:background="@drawable/bg_input_light_red"
             android:inputType="date"
             android:padding="10dp"/>

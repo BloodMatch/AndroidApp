@@ -116,7 +116,7 @@ public class  RegisterActivity extends AppCompatActivity {
             }
 
             confirmPassword = confirmPasswordEditText.getText().toString();
-            if( confirmPassword.isEmpty() ){
+            /*if( confirmPassword.isEmpty() ){
                 confirmPasswordEditText.setError("Confirm password cannot be empty !");
                 return;
             }
@@ -124,7 +124,7 @@ public class  RegisterActivity extends AppCompatActivity {
             if( !confirmPassword.equals(password) ){
                 confirmPasswordEditText.setError("The confirm password confirmation does not match !");
                 return;
-            }
+            }*/
 
             donor.setDisplayName(fullName);
             donor.setPhoneNumber(phoneNumber);
@@ -139,10 +139,10 @@ public class  RegisterActivity extends AppCompatActivity {
             String szipCode;
             Integer zipCode;
             cin = cinEditText.getText().toString();
-            if( cin.isEmpty() ){
+            /*if( cin.isEmpty() ){
                 cinEditText.setError("Please enter your card ID !");
                 return;
-            }
+            }*/
 
             int selectedID = genderRadioGroup.getCheckedRadioButtonId();
             if( selectedID != -1 ) {
@@ -153,16 +153,16 @@ public class  RegisterActivity extends AppCompatActivity {
             }
 
             birthDate = birthDateEditText.getText().toString();
-            if( birthDate.isEmpty() ){
+            /*if( birthDate.isEmpty() ){
                 birthDateEditText.setError("Please enter your birth date !");
                 return;
-            }
+            }*/
 
             city = cityEditText.getText().toString();
-            if( city.isEmpty() ){
+            /*if( city.isEmpty() ){
                 cityEditText.setError("Please enter your city !");
                 return;
-            }
+            }*/
 
             szipCode = zipCodeEditText.getText().toString();
 
@@ -177,6 +177,7 @@ public class  RegisterActivity extends AppCompatActivity {
             donor.setBirthDate(birthDate);
             donor.setCity(city);
             donor.setZipCode(zipCode);
+            donor.setPhotoUrl("default-avatar.png");
 
             //update onclick listener 2->3
             continueButton.setText(R.string.create_button_text);
@@ -210,13 +211,13 @@ public class  RegisterActivity extends AppCompatActivity {
             }
 
             if( sfrequency.isEmpty() ){
-                frequency = null;
+                frequency = 0;
             }else{
                 frequency = Integer.parseInt(sfrequency);
             }
 
             if( squantity.isEmpty() ){
-                quantity = null;
+                quantity = 0;
             }else{
                 quantity = Integer.parseInt(squantity);
             }
@@ -241,7 +242,7 @@ public class  RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
                         UserAccount.sendEmailVerification();
-                        DonorCollection.insertDocument(email, donor).addOnSuccessListener(aVoid -> {
+                        DonorCollection.insertDocument( donor).addOnSuccessListener(aVoid -> {
                             Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
                             // set default image profile
                             setupUser(donor.getDisplayName());
@@ -270,6 +271,7 @@ public class  RegisterActivity extends AppCompatActivity {
      * Set up user default image and display name
      * */
     private void setupUser(String displayName){
+        String defaultPhotoUri = "default-avatar.png";
         UserAccount.getPhotoUrl("default-avatar.png")
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override

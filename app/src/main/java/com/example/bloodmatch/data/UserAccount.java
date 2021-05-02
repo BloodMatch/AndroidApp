@@ -72,12 +72,13 @@ public class UserAccount {
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                 .setPhotoUri(uri)
                 .build();
+        DonorCollection.updatePhotoUrl(uri.toString());
         return user.updateProfile(profileUpdates);
     }
 
-    public static Task<Void> updatePassword(String password) {
+    public static Task<Void> updatePassword(String newPassword) {
         FirebaseUser user = mAuth.getCurrentUser();
-        return user.updatePassword(password);
+        return user.updatePassword(newPassword);
     }
 
     /**
