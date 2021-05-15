@@ -15,6 +15,8 @@ import com.example.bloodmatch.model.Blood;
 import com.example.bloodmatch.model.Motivation;
 import com.example.bloodmatch.model.RequestModel;
 
+import java.util.ArrayList;
+
 public class MakeRequestActivity extends BaseActivity {
 
     private EditText whereEditText, motivationEditText;
@@ -93,6 +95,8 @@ public class MakeRequestActivity extends BaseActivity {
             requestModel.setBenefit(benefit);
             requestModel.setLocation(where);
             requestModel.setMotivation(motivationModel);
+
+            requestModel.setDonors(new ArrayList<>());
 
             RequestCollection.insertDocument(requestModel)
                 .addOnSuccessListener(aVoid->{

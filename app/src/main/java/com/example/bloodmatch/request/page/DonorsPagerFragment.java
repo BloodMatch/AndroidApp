@@ -4,30 +4,28 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.Toast;
-
 import com.example.bloodmatch.R;
 import com.example.bloodmatch.model.DonorModel;
 import com.example.bloodmatch.model.RequestModel;
 import com.example.bloodmatch.request.RequestManagerActivity;
-import com.example.bloodmatch.request.list.DonorListAdapter;
+import com.example.bloodmatch.request.list.DonorsListFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +51,6 @@ public class DonorsPagerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_donors_pager, container, false);
     }
 
@@ -91,22 +88,41 @@ public class DonorsPagerFragment extends Fragment {
 
         Button askForHelpButton = (Button) view.findViewById(R.id.ask_for_help);
         askForHelpButton.setOnClickListener(v->{
-            Toast.makeText(getActivity(), "current "+String.valueOf(mViewPager.getCurrentItem()), Toast.LENGTH_SHORT).show();
-            /*listDonors.remove(mViewPager.getCurrentItem());
-            mViewPager.getAdapter().notifyDataSetChanged();*/
+            askDonorForHelp(listDonors.get(mViewPager.getCurrentItem()));
+            listDonors.remove(mViewPager.getCurrentItem());
+            Toast.makeText(getActivity(), "list size "+listDonors.size(), Toast.LENGTH_SHORT).show();
+            if( listDonors.isEmpty() ) {
+                Toast.makeText(getActivity(), "list empty "+listDonors.isEmpty(), Toast.LENGTH_SHORT).show();
+                //getActivity().getSupportFragmentManager().popBackStackImmediate();
+                ((RequestManagerActivity)getActivity()).openFragment(new DonorsListFragment(), true);
+                return;
+            }
+            mViewPager.getAdapter().notifyDataSetChanged();
+
         });
     }
 
     public void askDonorForHelp(DonorModel donor){
         RequestModel myRequest = ((RequestManagerActivity)getActivity()).getRequest();
-        myRequest.getDonors().add(db.collection("donors").document());
 
+        DocumentReference requestReference, donorReference;
+
+        requestReference = db.collection("requests").document(myRequest.id());
+        donorReference = db.collection("donors").document(donor.id());
+
+        myRequest.getDonors().add( donorReference );
+        requestReference.update("donors", myRequest.getDonors());
+
+        donor.getRequests().add( requestReference );
+        donorReference.update("requests", donor.getRequests());
     }
 
     public void filterArrayDonor()
     {
-        //this.listDonors
-        // blood type
-        // machine Learning (>50%)
+        // this.listDonors
+        // Not me
+        // Not someOne I asked for help
+        // check blood type compatibility
+        // inference with machine Learning (>50%)
     }
 }

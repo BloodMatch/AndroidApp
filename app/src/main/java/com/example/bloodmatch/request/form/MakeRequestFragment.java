@@ -114,8 +114,8 @@ public class MakeRequestFragment extends Fragment {
             requestModel.setMotivation(motivationModel);
 
             RequestCollection.insertDocument(requestModel)
-                    .addOnSuccessListener(aVoid->{
-
+                    .addOnSuccessListener(documentReference->{
+                        requestModel.id(documentReference.getId());
                         ((RequestManagerActivity)getActivity()).setRequest(requestModel);
                         ((RequestManagerActivity)getActivity()).openFragment(new DonorsListFragment());
                         Toast.makeText(getActivity(), "Request added successfully", Toast.LENGTH_SHORT).show();

@@ -1,9 +1,11 @@
 package com.example.bloodmatch.request;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
 
 import com.example.bloodmatch.BaseActivity;
 import com.example.bloodmatch.R;
@@ -13,18 +15,14 @@ import com.example.bloodmatch.request.list.DonorsListFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.List;
-
-import javax.annotation.Nullable;
 
 public class RequestManagerActivity extends BaseActivity {
 
+    private RequestModel myRequest;
+    private ProgressBar progressBar;
     private static FirebaseFirestore db;
     private static FirebaseAuth mAuth;
-    private RequestModel myRequest;
 
     static{
         db =  FirebaseFirestore.getInstance();
@@ -46,6 +44,7 @@ public class RequestManagerActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        progressBar = (ProgressBar) findViewById(R.id.loading);
 
         db.collection("requests")
             .whereEqualTo("inNeed", db.collection("donors").document(mAuth.getCurrentUser().getEmail()))
@@ -65,6 +64,7 @@ public class RequestManagerActivity extends BaseActivity {
                         setRequest(request);
                         openFragment(new DonorsListFragment());
                     }
+                    progressBar.setVisibility(View.GONE);
                 }
             });
 

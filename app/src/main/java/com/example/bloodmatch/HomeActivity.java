@@ -12,21 +12,27 @@ import com.bumptech.glide.Glide;
 import com.example.bloodmatch.data.DonorCollection;
 import com.example.bloodmatch.data.UserAccount;
 import com.example.bloodmatch.model.DonorModel;
-import com.example.bloodmatch.request.MakeRequestActivity;
 import com.example.bloodmatch.request.RequestManagerActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 // To have navbar the class should entend the BaseActivity abstract class
 public class HomeActivity extends BaseActivity {
 
     private ImageView ivUser;
     private TextView tvUserName, tvUserBloodGroup;
-    private FirebaseAuth mAuth;
     private DonorModel donor;
     private Button donorButton, recipientButton;
+    private static FirebaseFirestore db;
+    private static FirebaseAuth mAuth;
+
+    static{
+        db =  FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+    }
 
     /**
      * Should implement this method to have a navbar
@@ -65,7 +71,9 @@ public class HomeActivity extends BaseActivity {
 
         donorButton.setOnClickListener(v->{
             Intent i = new Intent(HomeActivity.this, DonorProfileActivity.class);
-            i.putExtra("DONOR_EMAIL", "aubbenyas717@gmail.com");
+            i.putExtra("DONOR_REFERENCE",
+                    db.collection("donors").document("aubbenyas717@gmail.com").getPath());
+
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
             Toast.makeText(HomeActivity.this, "Donor Button Clicked", Toast.LENGTH_SHORT).show();

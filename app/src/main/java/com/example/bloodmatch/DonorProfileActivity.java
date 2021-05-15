@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 import com.example.bloodmatch.data.DonorCollection;
 import com.example.bloodmatch.model.DonorModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -24,6 +26,13 @@ public class DonorProfileActivity extends BaseActivity {
     private Button  phoneCallButton, textMessageButton, whatsAppButton, checkInButton;
     private ImageView pictureImageView;
     private DonorModel donor;
+    private static FirebaseFirestore db;
+    private static FirebaseAuth mAuth;
+
+    static{
+        db =  FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+    }
 
     @Override
     protected int getLayoutResource() {
@@ -44,9 +53,20 @@ public class DonorProfileActivity extends BaseActivity {
         whatsAppButton = findViewById(R.id.whatsApp);
         checkInButton = findViewById(R.id.check_in);
 
-        String email = getIntent().getStringExtra("DONOR_EMAIL");//"aubbenyas717@gmail.com";
+        //String email = getIntent().getStringExtra("DONOR_EMAIL");//"aubbenyas717@gmail.com";
+        DocumentReference documentReference;
         // Get user Document
-        DonorCollection.selectDocument(email).addOnSuccessListener( documentSnapshot -> {
+
+        if (getIntent().hasExtra("DONOR_EMAIL")){
+            documentReference = db.collection("donors").document(getIntent().getStringExtra("DONOR_EMAIL"));
+        }
+        else if( getIntent().hasExtra("DONOR_REFERENCE") ){
+            documentReference = db.document(getIntent().getStringExtra("DONOR_REFERENCE"));
+        }else{
+            return;
+        }
+
+        documentReference.get().addOnSuccessListener( documentSnapshot -> {
             donor = documentSnapshot.toObject(DonorModel.class);
             displayNameTextView.setText(donor.getDisplayName());
 

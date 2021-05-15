@@ -44,15 +44,15 @@
                     android:textSize="15sp"
                     android:textAllCaps="true"
                     android:text="Donors"/>
+
                 <TextView
                     android:id="@+id/count_donors"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:gravity="center"
-                    android:textSize="20sp"
-                    android:text="47"
-                    />
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <Button
@@ -78,7 +78,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
-        android:layout_marginBottom="50dp"
+        android:background="@color/white"
         android:divider="@color/gray"
         />
 

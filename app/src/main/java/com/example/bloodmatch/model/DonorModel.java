@@ -1,6 +1,9 @@
 package com.example.bloodmatch.model;
 
+import com.google.firebase.firestore.DocumentReference;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class DonorModel extends UserModel {
     //private String id;
@@ -9,6 +12,7 @@ public class DonorModel extends UserModel {
     private Donation donation;
     private Blood blood;
     private Integer zipCode;
+    private List<DocumentReference> requests;
 
     public static class Donation{
         private String firstTime, lastTime;
@@ -72,7 +76,9 @@ public class DonorModel extends UserModel {
 
     public Integer getAge(){ return 0; }
 
-    public String getAddress()
-    { return ((zipCode == null)? "": zipCode + " ,") + city; }
+    public String getAddress(){ return ((zipCode == null)? "": zipCode + " ,") + city; }
 
+    public List<DocumentReference> getRequests() { return requests; }
+
+    public void setRequests(List<DocumentReference> requests) { this.requests = requests; }
 }

@@ -80,8 +80,14 @@ public class DonorPagerAdapter extends PagerAdapter {
         return pageView;
     }
 
-    /*@Override
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return PagerAdapter.POSITION_NONE;
+        //return super.getItemPosition(object);
+    }
+
+    @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout) object);
-    }*/
+        container.removeView((FrameLayout) object);
+    }
 }
