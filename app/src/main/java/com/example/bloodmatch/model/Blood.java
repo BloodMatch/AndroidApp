@@ -1,12 +1,16 @@
 package com.example.bloodmatch.model;
 
+import android.os.Parcel;
+
 import com.google.android.gms.common.util.ArrayUtils;
 
+import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Blood {
+public class Blood implements Serializable {
     private String type,  rhesus;
     private static HashMap<String , String[]> bloodGraph;
 
@@ -89,4 +93,5 @@ public class Blood {
     public String toString() {
         return type.concat(rhesus);
     }
+
 }

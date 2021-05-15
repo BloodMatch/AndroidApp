@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".request.MakeRequestActivity"
-    android:background="@color/white">
-    <include
-        android:id="@+id/app_navbar"
-        layout="@layout/navbar_layout"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="34dp" />
+    android:background="@color/white"
+    tools:context=".request.form.MakeRequestFragment">
+
     <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/nav_height">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_leftRight_text_input"
             android:layout_marginEnd="@dimen/margin_leftRight_text_input"
             android:orientation="vertical"
@@ -292,5 +287,4 @@
         </LinearLayout>
     </ScrollView>
 
-
-</RelativeLayout>
+</FrameLayout>

@@ -33,7 +33,7 @@ public class DonorProfileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String email = "aubbenyas717@gmail.com";
+
         displayNameTextView = findViewById(R.id.displayName);
         donationsTextView = findViewById(R.id.donations);
         unitsTextView = findViewById(R.id.units);
@@ -44,6 +44,7 @@ public class DonorProfileActivity extends BaseActivity {
         whatsAppButton = findViewById(R.id.whatsApp);
         checkInButton = findViewById(R.id.check_in);
 
+        String email = getIntent().getStringExtra("DONOR_EMAIL");//"aubbenyas717@gmail.com";
         // Get user Document
         DonorCollection.selectDocument(email).addOnSuccessListener( documentSnapshot -> {
             donor = documentSnapshot.toObject(DonorModel.class);

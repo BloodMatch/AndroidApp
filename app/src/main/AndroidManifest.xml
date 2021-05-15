@@ -13,9 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BloodMatch">
-        <activity android:name=".ChangePasswordActivity"></activity>
+        <activity android:name=".request.RequestManagerActivity"></activity>
+        <activity android:name=".RequestActivity" />
+        <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".DonorProfileActivity" />
-        <activity android:name=".MakeRequestActivity" />
+        <activity android:name=".request.MakeRequestActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity" />

@@ -2,7 +2,7 @@ package com.example.bloodmatch.model;
 
 import java.io.Serializable;
 
-public class DonorModel extends UserModel implements Serializable {
+public class DonorModel extends UserModel {
     //private String id;
     private String cin, gender, birthDate, city;
     private boolean available = true;
@@ -69,5 +69,10 @@ public class DonorModel extends UserModel implements Serializable {
     public Donation getDonation() { return donation; }
 
     public void setDonation(Donation donation) { this.donation = donation; }
+
+    public Integer getAge(){ return 0; }
+
+    public String getAddress()
+    { return ((zipCode == null)? "": zipCode + " ,") + city; }
 
 }

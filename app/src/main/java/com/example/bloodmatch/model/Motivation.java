@@ -1,6 +1,8 @@
 package com.example.bloodmatch.model;
 
-public class Motivation {
+import java.io.Serializable;
+
+public class Motivation implements Serializable {
     private String text;
     private String media1Url, media2Url, media3Url, media4Url;
 

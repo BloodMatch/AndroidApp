@@ -1,14 +1,23 @@
 package com.example.bloodmatch.model;
 
+import android.annotation.SuppressLint;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.view.MotionEvent;
+
 import com.google.firebase.firestore.DocumentReference;
 import com.example.bloodmatch.data.DonorCollection;
 
-public class RequestModel {
+import java.io.Serializable;
+import java.util.List;
+
+@SuppressLint("ParcelCreator")
+public class RequestModel extends Model{
     private String benefit, location;
     private Blood blood;
     private Motivation motivation;
     private DocumentReference inNeed;
-    private DonorModel donor;
+    private List<DocumentReference> donors;
 
     public RequestModel(){}
 
@@ -52,11 +61,7 @@ public class RequestModel {
         this.inNeed = inNeed;
     }
 
-    public DonorModel getRecipient(){
-        return donor;
-    }
+    public List<DocumentReference> getDonors() { return donors; }
 
-    public void setRecipient(DonorModel donor){
-        this.donor = donor;
-    }
+    public void setDonors(List<DocumentReference> donors) { this.donors = donors; }
 }

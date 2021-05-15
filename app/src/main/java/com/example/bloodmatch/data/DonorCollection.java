@@ -24,6 +24,7 @@ public class DonorCollection {
     }
 
     public static Task <DocumentSnapshot> selectDocument(String email){
+        Log.d("collection;email : ", email);
         return  db.collection(collectionName).document(email)
                 .get();
     }

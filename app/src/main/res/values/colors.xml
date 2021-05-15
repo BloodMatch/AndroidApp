@@ -18,4 +18,6 @@
     <color name="light_gray">#EEEEEE</color>
     <color name="gray">#AAAAAA</color>
     <color name="dark_gray">#555555</color>
+	<color name="cold_blue">#56CCF2</color>
+	<color name="cold_red">#FF7275</color>
 </resources>

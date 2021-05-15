@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.example.bloodmatch.data.DonorCollection;
 import com.example.bloodmatch.data.UserAccount;
 import com.example.bloodmatch.model.DonorModel;
+import com.example.bloodmatch.request.MakeRequestActivity;
+import com.example.bloodmatch.request.RequestManagerActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,13 +65,14 @@ public class HomeActivity extends BaseActivity {
 
         donorButton.setOnClickListener(v->{
             Intent i = new Intent(HomeActivity.this, DonorProfileActivity.class);
+            i.putExtra("DONOR_EMAIL", "aubbenyas717@gmail.com");
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
             Toast.makeText(HomeActivity.this, "Donor Button Clicked", Toast.LENGTH_SHORT).show();
         });
 
         recipientButton.setOnClickListener(v->{
-            Intent i = new Intent(HomeActivity.this, MakeRequestActivity.class);
+            Intent i = new Intent(HomeActivity.this, RequestManagerActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
         });
