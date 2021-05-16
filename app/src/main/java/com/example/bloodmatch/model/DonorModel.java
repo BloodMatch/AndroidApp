@@ -1,6 +1,10 @@
 package com.example.bloodmatch.model;
 
+import com.google.firebase.firestore.DocumentReference;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DonorModel extends UserModel implements Serializable {
     //private String id;
@@ -9,6 +13,7 @@ public class DonorModel extends UserModel implements Serializable {
     private Donation donation;
     private Blood blood;
     private Integer zipCode;
+    private List<DocumentReference> requests;
 
     public static class Donation{
         private String firstTime, lastTime;
@@ -46,10 +51,6 @@ public class DonorModel extends UserModel implements Serializable {
 
     public void setCin(String cin) { this.cin = cin; }
 
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
-
-    public String getPhoneNumber() { return phoneNumber; }
-
     public String getGender() { return gender; }
 
     public void setGender(String gender) { this.gender = gender; }
@@ -74,4 +75,7 @@ public class DonorModel extends UserModel implements Serializable {
 
     public void setDonation(Donation donation) { this.donation = donation; }
 
+    public List<DocumentReference> getRequests() { return requests; }
+
+    public void setRequests(List<DocumentReference> requests) { this.requests = requests; }
 }

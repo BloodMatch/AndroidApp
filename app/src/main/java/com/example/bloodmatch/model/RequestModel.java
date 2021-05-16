@@ -3,12 +3,16 @@ package com.example.bloodmatch.model;
 import com.google.firebase.firestore.DocumentReference;
 import com.example.bloodmatch.data.DonorCollection;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class RequestModel {
     private String benefit, location;
     private Blood blood;
     private Motivation motivation;
+    private Date createdAt;
     private DocumentReference inNeed;
-    private DonorModel donor;
 
     public RequestModel(){}
 
@@ -52,11 +56,18 @@ public class RequestModel {
         this.inNeed = inNeed;
     }
 
-    public DonorModel getRecipient(){
-        return donor;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setRecipient(DonorModel donor){
-        this.donor = donor;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getFormatedTime(){
+        // formatting timestamp
+        DateFormat df = new SimpleDateFormat("HH:mm:ss");
+        long milliseconds = createdAt.getTime();
+        return df.format(new Date(milliseconds));
     }
 }

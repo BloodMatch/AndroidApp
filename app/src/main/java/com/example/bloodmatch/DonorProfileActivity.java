@@ -46,12 +46,7 @@ public class DonorProfileActivity extends AppCompatActivity {
                         donationsTextView.setText(String.valueOf( donor.getDonation().getFrequency().toString()));
                         unitsTextView.setText(String.valueOf(donor.getDonation().getQuantity().toString()));
                         bloodTextView.setText(donor.getBlood().toString());
-                        String imgUri = donor.getPhotoUrli();
-                        if( imgUri !=null){
-                            Glide.with(this)
-                                    .load(imgUri)
-                                    .into(pictureImageView);
-                        }
+
                     }
                 });
     }

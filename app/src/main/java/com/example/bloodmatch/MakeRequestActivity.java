@@ -13,6 +13,9 @@ import com.example.bloodmatch.model.Blood;
 import com.example.bloodmatch.model.Motivation;
 import com.example.bloodmatch.model.RequestModel;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firestore.v1.DocumentTransform;
+
+import java.util.Date;
 
 public class MakeRequestActivity extends BaseActivity {
 
@@ -92,6 +95,7 @@ public class MakeRequestActivity extends BaseActivity {
             requestModel.setBenefit(benefit);
             requestModel.setLocation(where);
             requestModel.setMotivation(motivationModel);
+            requestModel.setCreatedAt(new Date(getCurrentTimestamp()));
 
             RequestCollection.insertDocument(requestModel)
                 .addOnSuccessListener(aVoid->{
@@ -108,7 +112,9 @@ public class MakeRequestActivity extends BaseActivity {
 
 
         });
+    }
 
-
+    private long getCurrentTimestamp(){
+        return  System.currentTimeMillis()/1000;
     }
 }

@@ -63,10 +63,9 @@ public class HomeActivity extends BaseActivity {
                 });
 
         donorButton.setOnClickListener(v->{
-            /*Intent i = new Intent(HomeActivity.this, MakeRequestActivity.class);
+            Intent i = new Intent(HomeActivity.this, RequestListActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(i);*/
-            Toast.makeText(HomeActivity.this, "Donor Button Clicked", Toast.LENGTH_SHORT).show();
+            startActivity(i);
         });
 
         recipientButton.setOnClickListener(v->{

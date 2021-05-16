@@ -57,4 +57,5 @@
     </string-array>
     <string name="update_profile">Update profile</string>
     <string name="change_password">Change password</string>
+    <string name="search">Search</string>
 </resources>
