@@ -39,28 +39,27 @@ public class RequestListActivity extends BaseActivity {
 
         rvrequest = findViewById(R.id.recyleView);
 
-        synchronized(this){
-            DonorCollection.selectDocument(user.getEmail())
-                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            donor = documentSnapshot.toObject(DonorModel.class);
-                            // array request references not empty
-                            if(donor.getRequests() != null){
-                                Toast.makeText(RequestListActivity.this, "Nice "+donor.getRequests().size(), Toast.LENGTH_SHORT).show();
-                                for(DocumentReference ref : donor.getRequests()) {
-                                    getRequest(ref);
-                                }
+        DonorCollection.selectDocument(user.getEmail())
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        donor = documentSnapshot.toObject(DonorModel.class);
+                        // array request references not empty
+                        if(donor.getRequests() != null){
+                            Toast.makeText(RequestListActivity.this, " "+donor.getRequests().size(), Toast.LENGTH_SHORT).show();
+                            for(DocumentReference ref : donor.getRequests()) {
+                                getRequest(ref);
                             }
                         }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(RequestListActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(RequestListActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
         setAdapter();
     }
 
