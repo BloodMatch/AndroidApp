@@ -8,14 +8,16 @@ import android.view.MotionEvent;
 import com.google.firebase.firestore.DocumentReference;
 import com.example.bloodmatch.data.DonorCollection;
 
-import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-@SuppressLint("ParcelCreator")
 public class RequestModel extends Model{
     private String benefit, location;
     private Blood blood;
     private Motivation motivation;
+    private Date createdAt;
     private DocumentReference inNeed;
     private List<DocumentReference> donors;
 
@@ -64,4 +66,18 @@ public class RequestModel extends Model{
     public List<DocumentReference> getDonors() { return donors; }
 
     public void setDonors(List<DocumentReference> donors) { this.donors = donors; }
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getFormatedTime(){
+        // formatting timestamp
+        DateFormat df = new SimpleDateFormat("HH:mm:ss");
+        long milliseconds = createdAt.getTime();
+        return df.format(new Date(milliseconds));
+    }
 }

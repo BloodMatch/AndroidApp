@@ -70,31 +70,15 @@ public class HomeActivity extends BaseActivity {
                 });
 
         donorButton.setOnClickListener(v->{
-            Intent i = new Intent(HomeActivity.this, DonorProfileActivity.class);
-            i.putExtra("DONOR_REFERENCE",
-                    db.collection("donors").document("aubbenyas717@gmail.com").getPath());
-
+            Intent i = new Intent(HomeActivity.this, RequestListActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
-            Toast.makeText(HomeActivity.this, "Donor Button Clicked", Toast.LENGTH_SHORT).show();
         });
 
         recipientButton.setOnClickListener(v->{
             Intent i = new Intent(HomeActivity.this, RequestManagerActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(i);
-        });
-    }
-
-    /// Todo : should be in the Profile activity 
-    public void updatePhotoUrl(Uri uri){
-        UserAccount.updatePhotoUrl(uri)
-        .addOnCompleteListener(task -> {
-            if(task.isSuccessful()){
-                FirebaseUser user = mAuth.getCurrentUser();
-                Toast.makeText(HomeActivity.this, "User Image Updated", Toast.LENGTH_SHORT).show();
-                ivUser.setImageURI(user.getPhotoUrl());
-            }
         });
     }
 

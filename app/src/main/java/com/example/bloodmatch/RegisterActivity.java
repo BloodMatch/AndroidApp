@@ -242,11 +242,7 @@ public class  RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
                         UserAccount.sendEmailVerification();
-                        DonorCollection.insertDocument( donor).addOnSuccessListener(aVoid -> {
-                            Toast.makeText(RegisterActivity.this, "User document created", Toast.LENGTH_SHORT).show();
-                            // set default image profile
-                            setupUser(donor.getDisplayName());
-                        });
+                        setupUser(donor);
                     } else {
                         Log.d(TAG, "createAccount:failure");
                     }
@@ -270,23 +266,29 @@ public class  RegisterActivity extends AppCompatActivity {
     /**
      * Set up user default image and display name
      * */
-    private void setupUser(String displayName){
-        String defaultPhotoUri = "default-avatar.png";
+    private void setupUser(DonorModel donor){
         UserAccount.getPhotoUrl("default-avatar.png")
                 .addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Toast.makeText(RegisterActivity.this, "Image url retreved", Toast.LENGTH_SHORT).show();
-                        UserAccount.updateProfile(displayName, uri)
+                        UserAccount.updateProfile(donor.getDisplayName(), uri)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
-                                        Toast.makeText(RegisterActivity.this, "Image updated", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                                        finish();
+                                        donor.setPhotoUrl(uri.toString());
+                                        createDonorDocument(donor);
                                     }
                                 });
                     }
                 });
+    }
+
+    private void createDonorDocument(DonorModel donor){
+        DonorCollection.insertDocument(email, donor).addOnSuccessListener(aVoid -> {
+            Toast.makeText(RegisterActivity.this, "Image updated", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            finish();
+        });
     }
 }

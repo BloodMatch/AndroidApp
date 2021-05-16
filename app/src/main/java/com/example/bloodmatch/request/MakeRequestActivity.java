@@ -16,6 +16,10 @@ import com.example.bloodmatch.model.Motivation;
 import com.example.bloodmatch.model.RequestModel;
 
 import java.util.ArrayList;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firestore.v1.DocumentTransform;
+
+import java.util.Date;
 
 public class MakeRequestActivity extends BaseActivity {
 
@@ -95,6 +99,7 @@ public class MakeRequestActivity extends BaseActivity {
             requestModel.setBenefit(benefit);
             requestModel.setLocation(where);
             requestModel.setMotivation(motivationModel);
+            requestModel.setCreatedAt(new Date(getCurrentTimestamp()));
 
             requestModel.setDonors(new ArrayList<>());
 
@@ -113,7 +118,9 @@ public class MakeRequestActivity extends BaseActivity {
 
 
         });
+    }
 
-
+    private long getCurrentTimestamp(){
+        return  System.currentTimeMillis()/1000;
     }
 }

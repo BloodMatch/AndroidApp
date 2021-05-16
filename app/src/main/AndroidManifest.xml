@@ -18,6 +18,8 @@
         <activity android:name=".ChangePasswordActivity" />
         <activity android:name=".DonorProfileActivity" />
         <activity android:name=".request.MakeRequestActivity" />
+        <activity android:name=".RequestListActivity"></activity>
+        <activity android:name=".DonorProfileActivity"></activity>
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity" />
