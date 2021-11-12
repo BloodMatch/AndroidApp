@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/picture"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_gravity="center"
+                app:civ_border_color="@color/blood_color"
+                app:civ_border_width="3dp" />
+            <TextView
+                android:id="@+id/displayName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:maxWidth="300dp"
+                android:layout_marginTop="10dp"
+                android:text="name, age"
+                android:textStyle="bold"
+                android:textColor="@color/blood_color"
+                android:gravity="center"
+                android:textSize="10pt"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Donation"
+                    android:textColor="@color/blood_color"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:id="@+id/donations"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/blood_color"
+                    android:text=".."
+                    android:textSize="10pt"
+                    android:textStyle="normal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:background="@color/light_gray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Units"
+                    android:textColor="@color/blood_color"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/units"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/blood_color"
+                    android:text=".."
+                    android:textSize="10pt"
+                    android:textStyle="normal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_marginTop="20dp"
+                android:layout_width="1dp"
+                android:layout_height="50dp"
+                android:background="@color/light_gray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Blood"
+                    android:textColor="@color/blood_color"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/blood"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/blood_color"
+                    android:text=".."
+                    android:textSize="10pt"
+                    android:textStyle="normal"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/light_gray" />
+    </LinearLayout>
+
+
+</FrameLayout>

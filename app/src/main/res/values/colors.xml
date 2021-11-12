@@ -7,10 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="hint_text">#EDABAB</color>
+    <color name="light_red">#EF6665</color>
     <color name="blood_color">#ED4240</color>
     <color name="blood_white">#FFFAFA</color>
     <color name="blood_maron">#312526</color>
     <color name="blood_from">#EF473A</color>
     <color name="blood_to">#EA384D</color>
     <color name="google_button">#4285F4</color>
+    <color name="light_gray">#EEEEEE</color>
+    <color name="gray">#AAAAAA</color>
+    <color name="dark_gray">#555555</color>
+	<color name="cold_blue">#56CCF2</color>
+	<color name="cold_red">#FF7275</color>
 </resources>

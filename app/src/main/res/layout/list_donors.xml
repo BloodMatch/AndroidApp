@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:orientation="horizontal">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/donor_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:civ_border_color="@color/blood_color"
+        app:civ_border_width="3dp"
+        android:layout_weight="2"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="name"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            />
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="address"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yesterday"
+            android:textColor="@color/gray"
+            android:gravity="right"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/blood_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AB+"
+            android:textColor="@color/blood_color"
+            android:gravity="right"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

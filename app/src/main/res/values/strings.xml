@@ -1,16 +1,66 @@
 <resources>
     <string name="app_name">BloodMatch</string>
-    <string name="sign_in">Sign In</string>
-    <string name="password">Password</string>
+    <string name="organization_name">BloodMatch</string>
+    <string name="email_prompt">Email</string>
+    <string name="password_prompt">Password</string>
+    <string name="current_password_prompt">Current password</string>
+    <string name="new_password_prompt">New password</string>
+    <string name="confirm_password_prompt">Confirm new password</string>
     <string name="forget_password">Forget Password ?</string>
-    <string name="login">Login</string>
-    <string name="don_t_have_an_account_register_now">Don\'t have an account? Register Now</string>
-    <string name="give_blood_save_life">GIVE BLOOD SAVE LIFE</string>
-    <string name="email">Email</string>
+    <string name="sign_in_button">Login</string>
+    <string name="sign_in_title">Sign In</string>
+    <string name="sign_up_button">Register</string>
+    <string name="sign_up_title">Sign Up</string>
     <string name="sign_in_with_google">Sign In with Google</string>
     <string name="blood_match_logo">Blood Match</string>
     <string name="blood_match_slogan">Give Blood - Save Life</string>
+    <string name="firstTime_desc">Date of the last donation</string>
+    <string name="frequency_desc">Total number of donations</string>
+    <string name="quantity_desc">Total blood donated</string>
+    <string name="lastTime_desc">Date of the first donation</string>
+    <string name="continue_button_text">Continue</string>
+    <string name="cancel_button_text">Cancel</string>
+    <string name="create_button_text">Create</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="submit_button_text">Submit</string>
+    <string name="long_logo_bloodMatch">BloodMatch logo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="don_t_have_an_account_register_now">Don\'t have an account? Register Now</string>
+    <string name="give_blood_save_life">Give blood save life</string>
+    <string name="email">Email</string>
     <string name="register">Register</string>
     <string name="already_have_an_account_sign_in">Already have an account. Sign In</string>
     <string name="sign_up">Sign Up</string>
+    <string name="donor">Donor</string>
+    <string name="recipient">Recipient</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="update">Update</string>
+    <string name="save">Save</string>
+    <string name="userimage">My image</string>
+    <string name="camera">Take picture</string>
+    <string name="gallery">Choose from gallery</string>
+    <string name="phone_call">Phone call</string>
+    <string name="text_message">Text message</string>
+    <string name="whatsApp">WhatsApp</string>
+    <string name="check_in">Check in</string>
+
+    <string-array name="bloodGroups">
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+    </string-array>
+    <string name="update_profile">Update profile</string>
+    <string name="change_password">Change password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search">Search</string>
 </resources>
